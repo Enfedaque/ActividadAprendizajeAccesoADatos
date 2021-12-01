@@ -16,8 +16,6 @@ public interface UsuariosRepository extends CrudRepository<Usuarios, Long> {
 
     //Devuleve todos los usuarios
     List<Usuarios> findAll();
-    //Devuelve usuarios con ese id
-    Usuarios findById(long id);
     //Devuelve usuarios con una edad mayor que (>) la que se le pasa
     List<Usuarios> findByEdadGreaterThan(int edad);
 }

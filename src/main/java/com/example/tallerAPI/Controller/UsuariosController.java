@@ -2,8 +2,12 @@ package com.example.tallerAPI.Controller;
 
 import com.example.tallerAPI.Domain.Clientes;
 import com.example.tallerAPI.Domain.Usuarios;
+import com.example.tallerAPI.Excepciones.RespuestaErrores;
+import com.example.tallerAPI.Excepciones.UsuarioNotFoundException;
 import com.example.tallerAPI.Service.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,14 +30,14 @@ public class UsuariosController {
 
     //Metodo que me devuelve un usuario concreto segun su id
     @GetMapping("/Usuarios/{UsuariosId}")
-    public Usuarios getUsuario(@PathVariable long id){
+    public Usuarios getUsuario(@PathVariable long id) throws UsuarioNotFoundException {
         Usuarios miUsuarios=miUsuariosService.findById(id);
         return miUsuarios;
     }
 
     //Borrar un usuario por el id
     @DeleteMapping("/Usuarios/{UsuariosId}")
-    public  Usuarios deleteUsuario(@PathVariable long id){
+    public  Usuarios deleteUsuario(@PathVariable long id) throws UsuarioNotFoundException{
         Usuarios miUsuario=miUsuariosService.deleteUsuario(id);
         return miUsuario;
     }
@@ -47,8 +51,20 @@ public class UsuariosController {
 
     //Modificar un usuario por el id
     @PutMapping("/Usuarios/{UsuariosId}")
-    public Usuarios modifyUsuario(@RequestBody Usuarios usuario, @PathVariable long id){
+    public Usuarios modifyUsuario(@RequestBody Usuarios usuario, @PathVariable long id)
+            throws UsuarioNotFoundException{
         Usuarios miUsuario=miUsuariosService.modifyUsuario(usuario, id);
         return miUsuario;
     }
+
+    /*
+    TODO
+    AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
+     */
+    @ExceptionHandler(UsuarioNotFoundException.class)
+    public ResponseEntity<RespuestaErrores> HandlerUsuarioNoEncontrado(UsuarioNotFoundException unfe){
+        RespuestaErrores miRespuestaErrores=new RespuestaErrores("404", unfe.getMessage());
+        return new ResponseEntity<>(miRespuestaErrores, HttpStatus.NOT_FOUND);
+    }
+
 }
