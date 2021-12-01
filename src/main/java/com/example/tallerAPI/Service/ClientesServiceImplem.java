@@ -1,8 +1,8 @@
 package com.example.tallerAPI.Service;
 
 import com.example.tallerAPI.Domain.Clientes;
+import com.example.tallerAPI.Domain.Usuarios;
 import com.example.tallerAPI.Repository.ClientesRepository;
-import com.example.tallerAPI.Repository.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,14 +31,14 @@ public class ClientesServiceImplem implements ClientesService{
 
     @Override
     public Clientes deleteCliente(long id) {
-
-        return miClienteRepository.deleteCliente(id);
+        Clientes miCliente= miClienteRepository.findById(id);
+        miClienteRepository.deleteById(id);
+        return miCliente;
     }
 
     @Override
     public Clientes addCliente(Clientes cliente) {
-
-        return miClienteRepository.addCliente(cliente);
+        return miClienteRepository.save(cliente);
     }
 
     @Override
