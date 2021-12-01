@@ -1,6 +1,7 @@
 package com.example.tallerAPI.Service;
 
 import com.example.tallerAPI.Domain.Usuarios;
+import com.example.tallerAPI.Excepciones.UsuarioNotFoundException;
 import com.example.tallerAPI.Repository.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,13 +25,15 @@ public class UsuariosServiceImplem implements UsuariosService{
     }
 
     @Override
-    public Usuarios findById(long id) {
-        return miUsuariosRepository.findById(id);
+    public Usuarios findById(long id) throws UsuarioNotFoundException{
+        return miUsuariosRepository.findById(id)
+                .orElseThrow(() -> new UsuarioNotFoundException());
     }
 
     @Override
-    public Usuarios deleteUsuario(long id) {
-        Usuarios miUsuario= miUsuariosRepository.findById(id);
+    public Usuarios deleteUsuario(long id) throws UsuarioNotFoundException{
+        Usuarios miUsuario= miUsuariosRepository.findById(id)
+                .orElseThrow(() -> new UsuarioNotFoundException());;
         miUsuariosRepository.deleteById(id);
         return miUsuario;
     }
@@ -42,8 +45,9 @@ public class UsuariosServiceImplem implements UsuariosService{
     }
 
     @Override
-    public Usuarios modifyUsuario(Usuarios nuevoUsuario, long id) {
-        Usuarios miUsuario= miUsuariosRepository.findById(id);
+    public Usuarios modifyUsuario(Usuarios nuevoUsuario, long id) throws UsuarioNotFoundException{
+        Usuarios miUsuario= miUsuariosRepository.findById(id)
+                .orElseThrow(() -> new UsuarioNotFoundException());
         miUsuario.setNombre(nuevoUsuario.getNombre());
         miUsuario.setApellido(nuevoUsuario.getApellido());
         miUsuario.setDNI(nuevoUsuario.getDNI());

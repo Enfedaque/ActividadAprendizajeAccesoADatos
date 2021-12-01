@@ -1,6 +1,7 @@
 package com.example.tallerAPI.Service;
 
 import com.example.tallerAPI.Domain.Usuarios;
+import com.example.tallerAPI.Excepciones.UsuarioNotFoundException;
 
 import java.util.List;
 
@@ -12,8 +13,8 @@ public interface UsuariosService {
 
     List<Usuarios> findAll();
     void cambiarEmail(String email);
-    Usuarios findById(long id);
-    Usuarios deleteUsuario(long id);
+    Usuarios findById(long id) throws UsuarioNotFoundException;
+    Usuarios deleteUsuario(long id) throws UsuarioNotFoundException;
     Usuarios addUsuario(Usuarios usuario);
-    Usuarios modifyUsuario(Usuarios usuario, long id);
+    Usuarios modifyUsuario(Usuarios usuario, long id) throws UsuarioNotFoundException;
 }

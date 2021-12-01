@@ -30,6 +30,8 @@ public class Usuarios {
     @Column
     private int edad;
 
+
+
     public String getNombre() {
         return nombre;
     }

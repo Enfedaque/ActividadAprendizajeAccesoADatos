@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class Clientes extends Usuarios{
 
     @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID_Cliente;
+
     @Column
     private long ID_vehiculo;
 
