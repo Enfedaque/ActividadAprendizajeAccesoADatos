@@ -1,5 +1,6 @@
 package com.example.tallerAPI.Controller;
 
+import com.example.tallerAPI.Domain.Clientes;
 import com.example.tallerAPI.Domain.Usuarios;
 import com.example.tallerAPI.Service.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
