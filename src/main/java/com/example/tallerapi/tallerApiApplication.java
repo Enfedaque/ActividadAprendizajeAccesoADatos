@@ -1,14 +1,14 @@
-package com.example.tallerAPI;
+package com.example.tallerapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TallerApiApplication {
+public class tallerApiApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(TallerApiApplication.class, args);
+		SpringApplication.run(tallerApiApplication.class, args);
 	}
 
 }

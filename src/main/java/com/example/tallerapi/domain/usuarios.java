@@ -1,17 +1,22 @@
-package com.example.tallerAPI.Domain;
+package com.example.tallerapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Data //Con esta anotacion de lombock hago que todos los atributos tengasn get y set
 @AllArgsConstructor //Creo constructor completo
 @NoArgsConstructor //Creo constructor vacio
 //Le indico a la bbdd que es una tabla
-@Entity(name = "Usuarios")
-public class Usuarios {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class usuarios {
 
     //Le indico las columnas y el ID autogenerado
     @Id
@@ -27,12 +32,12 @@ public class Usuarios {
     private String email;
     @Column
     private String telefono;
-    @Column
-    private int edad;
+    @Column(name = "fecha_nacimiento")
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate fechaNac;
 
-
-
-    public String getNombre() {
+    
+    /*public String getNombre() {
         return nombre;
     }
 
@@ -72,11 +77,11 @@ public class Usuarios {
         this.email = email;
     }
 
-    public int getEdad() {
-        return edad;
+    public Date getfechaNac() {
+        return fechaNac;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
+    public void setfechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
+    }*/
 }
