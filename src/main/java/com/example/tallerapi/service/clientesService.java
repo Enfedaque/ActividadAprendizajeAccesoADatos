@@ -10,6 +10,6 @@ public interface clientesService {
     List<clientes> findAll();
     clientes findById(long id);
     clientes deleteCliente(long id);
-    clientes addCliente(clientesDTO cliente);
+    clientes addCliente(clientesDTO clienteDTO);
     clientes modifyCliente(clientes cliente, long id);
 }

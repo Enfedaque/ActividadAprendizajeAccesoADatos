@@ -28,4 +28,36 @@ public class vehiculos {
     @Column(name = "fecha_salida")
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fechaSalida;
+
+    public long getVehiculosID() {
+        return vehiculosID;
+    }
+
+    public void setVehiculosID(long vehiculosID) {
+        this.vehiculosID = vehiculosID;
+    }
+
+    public clientes getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(clientes cliente) {
+        this.cliente = cliente;
+    }
+
+    public LocalDate getFechaEntrada() {
+        return fechaEntrada;
+    }
+
+    public void setFechaEntrada(LocalDate fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
+    }
+
+    public LocalDate getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(LocalDate fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
 }

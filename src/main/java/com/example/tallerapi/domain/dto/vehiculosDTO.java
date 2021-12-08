@@ -20,4 +20,28 @@ public class vehiculosDTO {
     private long cliente_id; //Le paso el id, y no el objeto entero
     private LocalDate fechaEntrada;
     private LocalDate fechaSalida;
+
+    public long getCliente_id() {
+        return cliente_id;
+    }
+
+    public void setCliente_id(long cliente_id) {
+        this.cliente_id = cliente_id;
+    }
+
+    public LocalDate getFechaEntrada() {
+        return fechaEntrada;
+    }
+
+    public void setFechaEntrada(LocalDate fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
+    }
+
+    public LocalDate getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(LocalDate fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
 }

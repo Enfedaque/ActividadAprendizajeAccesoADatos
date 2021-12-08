@@ -23,7 +23,7 @@ public class clientes extends usuarios {
     private boolean nombreEmpresa;
     //1 cliente tiene 1 o "n" vehiculos, que los voy a guardar en una lista
     @OneToMany(mappedBy = "cliente")
-    @JsonBackReference
+    @JsonBackReference // TODO Aqui creo que fallara porque tiene que ser una List, no solo un objeto
     private vehiculos vehiculo;
 
     public boolean isParticular() {

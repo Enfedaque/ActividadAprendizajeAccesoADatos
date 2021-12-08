@@ -36,8 +36,7 @@ public class clientesServiceImplem implements clientesService {
         clientes miCliente=miClienteRepository.findById(id);
         ModelMapper mapper=new ModelMapper();
         clientes miClienteFinal=mapper.map(miCliente, (Type) clientesDTO.class);
-
-        return null;
+        return miClienteFinal;
     }
 
     //TODO ¡¡¡Creo que esta bien pero hay que probarlo!!!!
@@ -65,7 +64,7 @@ public class clientesServiceImplem implements clientesService {
         return miClienteRepository.save(clienteNuevo);
     }
 
-    //TODO no estoy seguro de que este bien
+    //TODO creo casi seguro que esta mal
     @Override
     public clientes modifyCliente(clientes nuevoCliente, long id) {
 
