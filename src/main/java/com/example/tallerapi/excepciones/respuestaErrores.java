@@ -1,11 +1,11 @@
-package com.example.tallerAPI.Excepciones;
+package com.example.tallerapi.excepciones;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class RespuestaErrores {
+public class respuestaErrores {
 
     private String error;
     private String mensaje;
