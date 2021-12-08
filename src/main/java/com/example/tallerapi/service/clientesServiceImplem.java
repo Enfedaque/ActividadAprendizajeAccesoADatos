@@ -3,7 +3,6 @@ package com.example.tallerapi.service;
 import com.example.tallerapi.domain.clientes;
 import com.example.tallerapi.domain.dto.clientesDTO;
 import com.example.tallerapi.domain.vehiculos;
-import com.example.tallerapi.excepciones.usuarioNotFoundException;
 import com.example.tallerapi.repository.clientesRepository;
 import com.example.tallerapi.repository.vehiculosRepository;
 import org.modelmapper.ModelMapper;
@@ -11,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Service
@@ -31,21 +30,24 @@ public class clientesServiceImplem implements clientesService {
         return listadoFinal;
     }
 
-    @Override
-    public void cambiarEmail(String email) {
-
-    }
-
+    //TODO ¡¡¡Creo que esta bien pero hay que probarlo!!!!
     @Override
     public clientes findById(long id) {
-        return miClienteRepository.findById(id);
+        clientes miCliente=miClienteRepository.findById(id);
+        ModelMapper mapper=new ModelMapper();
+        clientes miClienteFinal=mapper.map(miCliente, (Type) clientesDTO.class);
+
+        return null;
     }
 
+    //TODO ¡¡¡Creo que esta bien pero hay que probarlo!!!!
     @Override
     public clientes deleteCliente(long id) {
         clientes miCliente= miClienteRepository.findById(id);
         miClienteRepository.deleteById(id);
-        return miCliente;
+        ModelMapper mapper=new ModelMapper();
+        clientes miClienteFinal=mapper.map(miCliente, (Type) clientesDTO.class);
+        return miClienteFinal;
     }
 
     //TODO ¡¡¡¡¡Esta perfecto este!!!!
@@ -63,13 +65,13 @@ public class clientesServiceImplem implements clientesService {
         return miClienteRepository.save(clienteNuevo);
     }
 
+    //TODO no estoy seguro de que este bien
     @Override
-    public clientes modifyCliente(clientesDTO clienteDTO, long id) {
-        //TODO
-        // Aqui tengo que pensar como hacerlo porque aunque lo haga con DTO, al modificar
-        // el vehiculo_id, puede que el nuevo id exista o no y dara fallo, ademas de ver como
-        // hacer que al pasar el id nuevo lo convierta a un objeto vehiculo, ya que creo
-        // que tendria que crear un nuevo vehiculo con ese id y es un lio*/
-        return null;
+    public clientes modifyCliente(clientes nuevoCliente, long id) {
+
+        clientes miCliente= miClienteRepository.findById(id);
+        ModelMapper mapper= new ModelMapper();
+        clientes miCliente2=mapper.map(nuevoCliente, miCliente.getClass());
+        return miCliente2;
     }
 }

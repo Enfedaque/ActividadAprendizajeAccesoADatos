@@ -8,9 +8,8 @@ import java.util.List;
 public interface clientesService {
 
     List<clientes> findAll();
-    void cambiarEmail(String email);
     clientes findById(long id);
     clientes deleteCliente(long id);
     clientes addCliente(clientesDTO cliente);
-    clientes modifyCliente(clientesDTO clienteDTO, long id);
+    clientes modifyCliente(clientes cliente, long id);
 }

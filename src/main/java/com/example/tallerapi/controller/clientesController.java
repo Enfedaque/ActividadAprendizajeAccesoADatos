@@ -36,14 +36,14 @@ public class clientesController {
     //MODIFICAR un cliente por el id
     //TODO hacerlo con DTOs y mapeos
     @PutMapping("/Clientes/{ClientesId}")
-    public clientes modifyCliente(@RequestBody clientesDTO clienteDTO, @PathVariable long id)
+    public clientes modifyCliente(@RequestBody clientes cliente, @PathVariable long id)
             throws usuarioNotFoundException {
-        clientes miCliente= miClienteService.modifyCliente(clienteDTO, id);
+        clientes miCliente= miClienteService.modifyCliente(cliente, id);
         return miCliente;
     }
 
     //Metodo que me devuelva el TOTAL DE CLIENTES
-    //TODO hacerlo con DTOs y mapeos
+    //TODO ¡¡terminado en teoria
     @GetMapping("/Clientes") //Forma de buscarlo en el navegador
     public List<clientes> getClientes(){
         List<clientes> clientes=miClienteService.findAll();
