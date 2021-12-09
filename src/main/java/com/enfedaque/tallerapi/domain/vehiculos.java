@@ -33,6 +33,46 @@ public class vehiculos {
     @Column(name = "fecha_salida")
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fechaSalida;
+    @Column
+    private String matricula;
+    @Column
+    private float kilometros;
+    @Column
+    private int antiguedad;
+    @Column
+    private boolean unicoPropietario;
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public float getKilometros() {
+        return kilometros;
+    }
+
+    public void setKilometros(float kilometros) {
+        this.kilometros = kilometros;
+    }
+
+    public int getAntiguedad() {
+        return antiguedad;
+    }
+
+    public void setAntiguedad(int antiguedad) {
+        this.antiguedad = antiguedad;
+    }
+
+    public boolean isUnicoPropietario() {
+        return unicoPropietario;
+    }
+
+    public void setUnicoPropietario(boolean unicoPropietario) {
+        this.unicoPropietario = unicoPropietario;
+    }
 
     public long getVehiculosID() {
         return vehiculosID;
