@@ -1,9 +1,12 @@
 package com.enfedaque.tallerapi.controller;
 
+import com.enfedaque.tallerapi.excepciones.respuestaErrores;
 import com.enfedaque.tallerapi.service.usuariosService;
 import com.enfedaque.tallerapi.domain.usuarios;
 import com.enfedaque.tallerapi.excepciones.usuarioNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -61,10 +64,17 @@ public class usuariosController {
     TODO
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */
-    /*@ExceptionHandler(UsuarioNotFoundException.class)
-    public ResponseEntity<RespuestaErrores> HandlerUsuarioNoEncontrado(UsuarioNotFoundException unfe){
-        RespuestaErrores miRespuestaErrores=new RespuestaErrores("404", unfe.getMessage());
+    @ExceptionHandler(usuarioNotFoundException.class)
+    public ResponseEntity<respuestaErrores> HandlerUsuarioNoEncontrado(usuarioNotFoundException unfe){
+        respuestaErrores miRespuestaErrores=new respuestaErrores("404", unfe.getMessage());
         return new ResponseEntity<>(miRespuestaErrores, HttpStatus.NOT_FOUND);
-    }*/
+    }
+
+    //Gestor de excepciones generico para fallos que no tenga pensados
+    @ExceptionHandler
+    public ResponseEntity<respuestaErrores> excepcionGenerica(Exception exception){
+        respuestaErrores miRespuestaErrores=new respuestaErrores("x", "Error en el lado servidor");
+        return new ResponseEntity<>(miRespuestaErrores, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 }

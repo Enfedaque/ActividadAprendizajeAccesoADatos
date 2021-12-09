@@ -1,9 +1,14 @@
 package com.enfedaque.tallerapi.controller;
 
 import com.enfedaque.tallerapi.domain.empleados;
+import com.enfedaque.tallerapi.excepciones.clienteNotFoundException;
+import com.enfedaque.tallerapi.excepciones.empleadoNotFoundException;
+import com.enfedaque.tallerapi.excepciones.respuestaErrores;
 import com.enfedaque.tallerapi.excepciones.usuarioNotFoundException;
 import com.enfedaque.tallerapi.service.empleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +28,7 @@ public class empleadosController {
 
     //BORRAR cliente
     @DeleteMapping("/Empleados/{EmpleadoId}")
-    public empleados deleteEmpleado(@PathVariable long id){
+    public empleados deleteEmpleado(@PathVariable long id) throws empleadoNotFoundException {
         empleados miEmpleado= miEmpleadoService.deleteEmpleado(id);
         return miEmpleado;
     }
@@ -31,7 +36,7 @@ public class empleadosController {
     //MODIFICAR un cliente por el id
     @PutMapping("/Empleados/{EmpleadoId}")
     public empleados modifyEmpleado(@RequestBody empleados empleado, @PathVariable long id)
-            throws usuarioNotFoundException {
+            throws empleadoNotFoundException {
         empleados empleados=miEmpleadoService.modifyEmpleado(empleado, id);
         return empleados;
     }
@@ -45,8 +50,26 @@ public class empleadosController {
 
     //Metodo que me devuelve un EMPLEADO SEGUN ID
     @GetMapping("/Empleados/{EmpleadoId}")
-    public empleados getEmpleado(@PathVariable long id){
+    public empleados getEmpleado(@PathVariable long id) throws empleadoNotFoundException {
         empleados miEmpleado=miEmpleadoService.findById(id);
         return miEmpleado;
+    }
+
+
+    /*
+    TODO
+    AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
+     */
+    @ExceptionHandler(empleadoNotFoundException.class)
+    public ResponseEntity<respuestaErrores> HandlerEmpleadoNoEncontrado(empleadoNotFoundException enfe){
+        respuestaErrores miRespuestaErrores=new respuestaErrores("404", enfe.getMessage());
+        return new ResponseEntity<>(miRespuestaErrores, HttpStatus.NOT_FOUND);
+    }
+
+    //Gestor de excepciones generico para fallos que no tenga pensados
+    @ExceptionHandler
+    public ResponseEntity<respuestaErrores> excepcionGenerica(Exception exception){
+        respuestaErrores miRespuestaErrores=new respuestaErrores("x", "Error en el lado servidor");
+        return new ResponseEntity<>(miRespuestaErrores, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

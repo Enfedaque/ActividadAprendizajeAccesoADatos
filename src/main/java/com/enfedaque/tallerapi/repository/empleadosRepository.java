@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface empleadosRepository extends CrudRepository<empleados, Long> {
 
-    empleados findById(long id);
+    //empleados findById(long id);
     List<empleados> findAll();
 }

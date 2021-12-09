@@ -2,9 +2,13 @@ package com.enfedaque.tallerapi.controller;
 
 import com.enfedaque.tallerapi.domain.dto.clientesDTO;
 import com.enfedaque.tallerapi.domain.clientes;
+import com.enfedaque.tallerapi.excepciones.clienteNotFoundException;
+import com.enfedaque.tallerapi.excepciones.respuestaErrores;
 import com.enfedaque.tallerapi.excepciones.usuarioNotFoundException;
 import com.enfedaque.tallerapi.service.clientesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +32,7 @@ public class clientesController {
     //BORRAR cliente
     //TODO Terminado, sin probar
     @DeleteMapping("/Clientes/{ClienteId}")
-    public clientes deleteCliente(@PathVariable long id){
+    public clientes deleteCliente(@PathVariable long id) throws clienteNotFoundException {
         clientes miCliente= miClienteService.deleteCliente(id);
         return miCliente;
     }
@@ -37,7 +41,7 @@ public class clientesController {
     //TODO Terminado, sin probar
     @PutMapping("/Clientes/{ClientesId}")
     public clientes modifyCliente(@RequestBody clientesDTO clientesDTO, @PathVariable long id)
-            throws usuarioNotFoundException {
+            throws clienteNotFoundException {
         clientes miCliente= miClienteService.modifyCliente(clientesDTO, id);
         return miCliente;
     }
@@ -53,8 +57,25 @@ public class clientesController {
     //Metodo que me devuelve un CLIENTE SEGUN ID
     //TODO Terminado, sin probar
     @GetMapping("/Clientes/{ClienteId}")
-    public clientesDTO getCliente(@PathVariable long id){
+    public clientesDTO getCliente(@PathVariable long id) throws clienteNotFoundException {
         clientesDTO miCliente=miClienteService.findById(id);
         return miCliente;
+    }
+
+    /*
+    TODO
+    AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
+     */
+    @ExceptionHandler(clienteNotFoundException.class)
+    public ResponseEntity<respuestaErrores> HandlerClienteNoEncontrado(clienteNotFoundException cnfe){
+        respuestaErrores miRespuestaErrores=new respuestaErrores("404", cnfe.getMessage());
+        return new ResponseEntity<>(miRespuestaErrores, HttpStatus.NOT_FOUND);
+    }
+
+    //Gestor de excepciones generico para fallos que no tenga pensados
+    @ExceptionHandler
+    public ResponseEntity<respuestaErrores> excepcionGenerica(Exception exception){
+        respuestaErrores miRespuestaErrores=new respuestaErrores("x", "Error en el lado servidor");
+        return new ResponseEntity<>(miRespuestaErrores, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

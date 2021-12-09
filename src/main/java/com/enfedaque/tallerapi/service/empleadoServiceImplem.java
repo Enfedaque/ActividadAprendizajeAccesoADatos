@@ -1,5 +1,6 @@
 package com.enfedaque.tallerapi.service;
 
+import com.enfedaque.tallerapi.excepciones.empleadoNotFoundException;
 import com.enfedaque.tallerapi.repository.empleadosRepository;
 import com.enfedaque.tallerapi.domain.empleados;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,9 @@ public class empleadoServiceImplem implements empleadoService {
     }
 
     @Override
-    public empleados modifyEmpleado(empleados empleado, long id) {
-        empleados miEmpleado= miEmpleadoRepository.findById( id);
+    public empleados modifyEmpleado(empleados empleado, long id) throws empleadoNotFoundException {
+        empleados miEmpleado= miEmpleadoRepository.findById( id)
+                .orElseThrow(() -> new empleadoNotFoundException());
         miEmpleado.setPuesto(empleado.getPuesto());
         miEmpleado.setDepartamento(empleado.getDepartamento());
         miEmpleado.setSalario(empleado.getSalario());
@@ -37,13 +39,16 @@ public class empleadoServiceImplem implements empleadoService {
     }
 
     @Override
-    public empleados findById(long id) {
-        return miEmpleadoRepository.findById(id);
+    public empleados findById(long id) throws empleadoNotFoundException {
+
+        return miEmpleadoRepository.findById(id)
+                .orElseThrow(() -> new empleadoNotFoundException());
     }
 
     @Override
-    public empleados deleteEmpleado(long id) {
-        empleados empleado=miEmpleadoRepository.findById(id);
+    public empleados deleteEmpleado(long id) throws empleadoNotFoundException {
+        empleados empleado=miEmpleadoRepository.findById(id)
+                .orElseThrow(() -> new empleadoNotFoundException());
         miEmpleadoRepository.deleteById(id);
         return empleado;
     }
