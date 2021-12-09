@@ -10,5 +10,5 @@ import java.util.List;
 public interface facturasRepository extends CrudRepository<facturas, Long> {
 
     List<facturas> findAll();
-    facturas findById(long id);
+    //facturas findById(long id);
 }

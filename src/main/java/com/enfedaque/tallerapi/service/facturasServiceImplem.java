@@ -3,6 +3,8 @@ package com.enfedaque.tallerapi.service;
 import com.enfedaque.tallerapi.domain.facturas;
 import com.enfedaque.tallerapi.domain.dto.facturasDTO;
 import com.enfedaque.tallerapi.domain.vehiculos;
+import com.enfedaque.tallerapi.excepciones.facturasNotFoundException;
+import com.enfedaque.tallerapi.excepciones.vehiculoNotFoundException;
 import com.enfedaque.tallerapi.repository.facturasRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +30,18 @@ public class facturasServiceImplem implements facturasService {
     }
 
     @Override
-    public facturas findById(long id) {
-        facturas miFactura=facturasRepository.findById(id);
+    public facturas findById(long id) throws facturasNotFoundException {
+        facturas miFactura=facturasRepository.findById(id)
+                .orElseThrow(() -> new facturasNotFoundException());
         ModelMapper mapper=new ModelMapper();
         facturas miFacturaFInal=mapper.map(miFactura, (Type) facturasDTO.class);
         return miFacturaFInal;
     }
 
     @Override
-    public facturas deleteFactura(long id) {
-        facturas miFactura= facturasRepository.findById(id);
+    public facturas deleteFactura(long id) throws facturasNotFoundException {
+        facturas miFactura= facturasRepository.findById(id)
+                .orElseThrow(() -> new facturasNotFoundException());
         facturasRepository.deleteById(id);
         ModelMapper mapper=new ModelMapper();
         facturas miFacturaFinal=mapper.map(miFactura, (Type) facturasDTO.class);
@@ -45,8 +49,9 @@ public class facturasServiceImplem implements facturasService {
     }
 
     @Override
-    public facturas addFactura(facturasDTO facturasDTO) {
-        vehiculos vehiculo=vehiculosRepository.findById(facturasDTO.getIdentificador());
+    public facturas addFactura(facturasDTO facturasDTO) throws vehiculoNotFoundException {
+        vehiculos vehiculo=vehiculosRepository.findById((long) facturasDTO.getIdentificador())
+                .orElseThrow(() -> new vehiculoNotFoundException());
         ModelMapper mapper=new ModelMapper();
         facturas facturaFInal=mapper.map(facturasDTO, facturas.class);
         facturaFInal.setVehiculo(vehiculo);
@@ -55,8 +60,9 @@ public class facturasServiceImplem implements facturasService {
 
     //TODO creo casi seguro que esta mal
     @Override
-    public facturas modifyFactura(facturasDTO facturasDTO, long id) {
-        facturas miFactura= facturasRepository.findById(id);
+    public facturas modifyFactura(facturasDTO facturasDTO, long id) throws facturasNotFoundException {
+        facturas miFactura= facturasRepository.findById(id)
+                .orElseThrow(() -> new facturasNotFoundException());
         ModelMapper mapper= new ModelMapper();
         facturas miFacturaFinal=mapper.map(facturasDTO, miFactura.getClass());
         return miFacturaFinal;

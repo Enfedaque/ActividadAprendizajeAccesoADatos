@@ -1,6 +1,8 @@
 package com.enfedaque.tallerapi.service;
 
 import com.enfedaque.tallerapi.domain.dto.clientesDTO;
+import com.enfedaque.tallerapi.excepciones.clienteNotFoundException;
+import com.enfedaque.tallerapi.excepciones.usuarioNotFoundException;
 import com.enfedaque.tallerapi.repository.clientesRepository;
 import com.enfedaque.tallerapi.repository.vehiculosRepository;
 import com.enfedaque.tallerapi.domain.clientes;
@@ -14,7 +16,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 @Service
-public class clientesServiceImplem implements clientesService {
+public class clientesServiceImplem implements clientesService{
 
     @Autowired
     private clientesRepository miClienteRepository;
@@ -32,8 +34,10 @@ public class clientesServiceImplem implements clientesService {
 
     //TODO ¡¡¡Creo que esta bien pero hay que probarlo!!!!
     @Override
-    public clientesDTO findById(long id) {
-        clientes miCliente=miClienteRepository.findById(id);
+    public clientesDTO findById(long id) throws clienteNotFoundException {
+        clientes miCliente=miClienteRepository.findById(id)
+                .orElseThrow(() -> new clienteNotFoundException());
+
         ModelMapper mapper=new ModelMapper();
         clientesDTO miClienteFinal=mapper.map(miCliente, (Type) clientesDTO.class);
         return miClienteFinal;
@@ -41,8 +45,9 @@ public class clientesServiceImplem implements clientesService {
 
     //TODO ¡¡¡Creo que esta bien pero hay que probarlo!!!!
     @Override
-    public clientes deleteCliente(long id) {
-        clientes miCliente= miClienteRepository.findById(id);
+    public clientes deleteCliente(long id) throws clienteNotFoundException {
+        clientes miCliente= miClienteRepository.findById(id)
+                .orElseThrow(() -> new clienteNotFoundException());
         miClienteRepository.deleteById(id);
         ModelMapper mapper=new ModelMapper();
         clientes miClienteFinal=mapper.map(miCliente, (Type) clientesDTO.class);
@@ -66,9 +71,10 @@ public class clientesServiceImplem implements clientesService {
 
     //TODO creo casi seguro que esta mal
     @Override
-    public clientes modifyCliente(clientesDTO clienteDTO, long id) {
+    public clientes modifyCliente(clientesDTO clienteDTO, long id) throws clienteNotFoundException {
 
-        clientes miCliente= miClienteRepository.findById(id);
+        clientes miCliente= miClienteRepository.findById(id)
+                .orElseThrow(() -> new clienteNotFoundException());
         ModelMapper mapper= new ModelMapper();
         clientes miCliente2=mapper.map(clienteDTO, miCliente.getClass());
         return miCliente2;

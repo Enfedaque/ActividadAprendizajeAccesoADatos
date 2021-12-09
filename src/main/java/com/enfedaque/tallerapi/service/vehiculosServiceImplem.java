@@ -4,6 +4,7 @@ import com.enfedaque.tallerapi.domain.dto.clientesDTO;
 import com.enfedaque.tallerapi.domain.dto.vehiculosDTO;
 import com.enfedaque.tallerapi.domain.clientes;
 import com.enfedaque.tallerapi.domain.vehiculos;
+import com.enfedaque.tallerapi.excepciones.vehiculoNotFoundException;
 import com.enfedaque.tallerapi.repository.clientesRepository;
 import com.enfedaque.tallerapi.repository.vehiculosRepository;
 import org.modelmapper.ModelMapper;
@@ -23,8 +24,9 @@ public class vehiculosServiceImplem implements vehiculosService{
 
     //TODO ¡¡¡¡¡Esta perfecto este!!!!
     @Override
-    public vehiculos addVehiculos(vehiculosDTO vehiculoDTO) {
-        clientes miCliente=clientesRepository.findById(vehiculoDTO.getCliente_id());
+    public vehiculos addVehiculos(vehiculosDTO vehiculoDTO) throws vehiculoNotFoundException {
+        clientes miCliente=clientesRepository.findById(vehiculoDTO.getCliente_id())
+                .orElseThrow(() -> new vehiculoNotFoundException());
         ModelMapper mapper=new ModelMapper();
         vehiculos vehiculoNuevo=mapper.map(vehiculoDTO, vehiculos.class);
         vehiculoNuevo.setCliente(miCliente);
@@ -42,8 +44,9 @@ public class vehiculosServiceImplem implements vehiculosService{
 
     //TODO ¡¡¡Creo que esta bien pero hay que probarlo!!!!
     @Override
-    public vehiculos deleteVehiculos(long id) {
-        vehiculos miVehiculo= vehiculosRepository.findById(id);
+    public vehiculos deleteVehiculos(long id) throws vehiculoNotFoundException {
+        vehiculos miVehiculo= vehiculosRepository.findById(id)
+                .orElseThrow(() -> new vehiculoNotFoundException());
         vehiculosRepository.deleteById(id);
         ModelMapper mapper=new ModelMapper();
         vehiculos miVehiculoFinal=mapper.map(miVehiculo, (Type) vehiculosDTO.class);
@@ -52,8 +55,9 @@ public class vehiculosServiceImplem implements vehiculosService{
 
     //TODO creo casi seguro que esta mal
     @Override
-    public vehiculos modifyVehiculos(vehiculosDTO vehiculoDTO, long id) {
-        vehiculos miVehiculo= vehiculosRepository.findById(id);
+    public vehiculos modifyVehiculos(vehiculosDTO vehiculoDTO, long id) throws vehiculoNotFoundException {
+        vehiculos miVehiculo= vehiculosRepository.findById(id)
+                .orElseThrow(() -> new vehiculoNotFoundException());
         ModelMapper mapper= new ModelMapper();
         vehiculos miVehiculo2=mapper.map(vehiculoDTO, miVehiculo.getClass());
         return miVehiculo2;
@@ -61,8 +65,9 @@ public class vehiculosServiceImplem implements vehiculosService{
 
     //TODO ¡¡¡Creo que esta bien pero hay que probarlo!!!!
     @Override
-    public vehiculos findById(long id) {
-        vehiculos miVehiculo=vehiculosRepository.findById(id);
+    public vehiculos findById(long id) throws vehiculoNotFoundException {
+        vehiculos miVehiculo=vehiculosRepository.findById(id)
+                .orElseThrow(() -> new vehiculoNotFoundException());
         ModelMapper mapper=new ModelMapper();
         vehiculos miVehiculoFinal=mapper.map(miVehiculo, (Type) clientesDTO.class);
         return miVehiculoFinal;

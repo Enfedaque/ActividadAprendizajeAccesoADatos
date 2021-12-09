@@ -12,5 +12,5 @@ public interface clientesRepository extends CrudRepository<clientes, Long> {
     //Devuleve todos los cleintes
     List<clientes> findAll();
     //Devuelve cliente con ese id
-    clientes findById(long id);
+    //clientes findById(long id);
 }

@@ -89,4 +89,5 @@ public class clientes extends usuarios {
     public void setVehiculo(vehiculos vehiculo) {
         this.vehiculo = vehiculo;
     }
+
 }

@@ -10,5 +10,5 @@ import java.util.List;
 public interface vehiculosRepository extends CrudRepository<vehiculos, Long> {
 
     List<vehiculos> findAll();
-    vehiculos findById(long id);
+    //vehiculos findById(long id);
 }
