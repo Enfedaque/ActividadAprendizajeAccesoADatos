@@ -8,6 +8,8 @@ import com.enfedaque.tallerapi.excepciones.usuarioNotFoundException;
 import com.enfedaque.tallerapi.excepciones.vehiculoNotFoundException;
 import com.enfedaque.tallerapi.service.clientesService;
 import com.enfedaque.tallerapi.service.vehiculosService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ import java.util.List;
 @RestController
 public class vehiculosController {
 
+    private final Logger logger = LoggerFactory.getLogger(vehiculosController.class);
+
     @Autowired
     private clientesService clientesService;
     @Autowired
@@ -27,24 +31,30 @@ public class vehiculosController {
     //TODO ¡¡Este ya esta terminado y perfecto en teoria!!!
     @PostMapping("/Vehiculos")
     public vehiculos addVehiculo(@RequestBody vehiculosDTO vehiculosDTO) throws vehiculoNotFoundException {
+        logger.info("Inicio AddVehiculo");
         vehiculos miVehiculo= vehiculosService.addVehiculos(vehiculosDTO);
+        logger.info("Vehiculo con id: " + miVehiculo.getVehiculosID() + " añadido. FIN de la operación");
         return miVehiculo;
     }
 
     //BORRAR vehiculo
     //TODO Terminado, sin probar
-    @DeleteMapping("/Vehiculos/{VehiculoId}")
+    @DeleteMapping("/Vehiculos/{id}")
     public vehiculos deleteVehiculo(@PathVariable long id) throws vehiculoNotFoundException {
+        logger.info("Inicio deleteVehiculo");
         vehiculos miVehiculo= vehiculosService.deleteVehiculos(id);
+        logger.info("Vehiculo con id: " + miVehiculo.getVehiculosID() + " eliminado. FIN de la operación");
         return miVehiculo;
     }
 
     //MODIFICAR un vehiculo por el id
     //TODO Terminado, sin probar
-    @PutMapping("/Vehiculos/{VehiculoId}")
+    @PutMapping("/Vehiculos/{id}")
     public vehiculos modifyVehiculo(@RequestBody vehiculosDTO vehiculosDTO, @PathVariable long id)
             throws vehiculoNotFoundException {
+        logger.info("Inicio modificar vehiculo con id: " + id);
         vehiculos miVehiculo= vehiculosService.modifyVehiculos(vehiculosDTO, id);
+        logger.info("Vehiculo con id: " + miVehiculo.getVehiculosID() + " modificado. FIN de la operación");
         return miVehiculo;
     }
 
@@ -52,15 +62,19 @@ public class vehiculosController {
     //TODO Terminado, sin probar
     @GetMapping("/Vehiculos") //Forma de buscarlo en el navegador
     public List<vehiculosDTO> getVehiculos(){
+        logger.info("Inicio getVehiculos");
         List<vehiculosDTO> vehiculos=vehiculosService.findAll();
+        logger.info("Fin operacion de mostrado de vehiculos");
         return vehiculos;
     }
 
     //Metodo que me devuelve un VEHICULO SEGUN ID
     //TODO Terminado, sin probar
-    @GetMapping("/Vehiculos/{VehiculoId}")
+    @GetMapping("/Vehiculos/{id}")
     public vehiculos getVehiculo(@PathVariable long id) throws vehiculoNotFoundException {
+        logger.info("Inicio busqueda de vehiculo con id: " + id);
         vehiculos miVehiculo=vehiculosService.findById(id);
+        logger.info("Fin de la operacion de busqueda");
         return miVehiculo;
     }
 
@@ -71,6 +85,7 @@ public class vehiculosController {
     @ExceptionHandler(vehiculoNotFoundException.class)
     public ResponseEntity<respuestaErrores> HandlerVehiculoNoEncontrado(vehiculoNotFoundException vnfe){
         respuestaErrores miRespuestaErrores=new respuestaErrores("404", vnfe.getMessage());
+        logger.error(vnfe.getMessage(), vnfe);
         return new ResponseEntity<>(miRespuestaErrores, HttpStatus.NOT_FOUND);
     }
 
@@ -78,6 +93,7 @@ public class vehiculosController {
     @ExceptionHandler
     public ResponseEntity<respuestaErrores> excepcionGenerica(Exception exception){
         respuestaErrores miRespuestaErrores=new respuestaErrores("x", "Error en el lado servidor");
+        logger.error(exception.getMessage(), exception);
         return new ResponseEntity<>(miRespuestaErrores, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

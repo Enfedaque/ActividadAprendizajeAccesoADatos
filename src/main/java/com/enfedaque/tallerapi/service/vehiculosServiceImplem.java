@@ -65,7 +65,7 @@ public class vehiculosServiceImplem implements vehiculosService{
 
     //TODO ¡¡¡Creo que esta bien pero hay que probarlo!!!!
     @Override
-    public vehiculos findById(long id) throws vehiculoNotFoundException {
+    public vehiculos findById(long id) throws vehiculoNotFoundException{
         vehiculos miVehiculo=vehiculosRepository.findById(id)
                 .orElseThrow(() -> new vehiculoNotFoundException());
         ModelMapper mapper=new ModelMapper();

@@ -3,6 +3,7 @@ package com.enfedaque.tallerapi.service;
 import com.enfedaque.tallerapi.domain.dto.clientesDTO;
 import com.enfedaque.tallerapi.excepciones.clienteNotFoundException;
 import com.enfedaque.tallerapi.excepciones.usuarioNotFoundException;
+import com.enfedaque.tallerapi.excepciones.vehiculoNotFoundException;
 import com.enfedaque.tallerapi.repository.clientesRepository;
 import com.enfedaque.tallerapi.repository.vehiculosRepository;
 import com.enfedaque.tallerapi.domain.clientes;
@@ -56,9 +57,10 @@ public class clientesServiceImplem implements clientesService{
 
     //TODO ¡¡¡¡¡Esta perfecto este!!!!
     @Override
-    public clientes addCliente(clientesDTO clienteDTO){
+    public clientes addCliente(clientesDTO clienteDTO) throws vehiculoNotFoundException {
         //Hay que alpliarlo porque tendria que lanzzar una excepcion con .orElseThrow
-        vehiculos vehiculo= miVehiculosRepository.findById(clienteDTO.getVehiculos_id());
+        vehiculos vehiculo= miVehiculosRepository.findById(clienteDTO.getVehiculos_id())
+                .orElseThrow(() -> new vehiculoNotFoundException());
         //Ahora me crearia el objeto cliente y lo añadiria con .set...
         // pero como eso es un rollo lo mapeo*/
         //Me mapea el DTO sobre el objeto real
@@ -78,5 +80,16 @@ public class clientesServiceImplem implements clientesService{
         ModelMapper mapper= new ModelMapper();
         clientes miCliente2=mapper.map(clienteDTO, miCliente.getClass());
         return miCliente2;
+    }
+
+    @Override
+    public clientes changeParameters(clientesDTO clienteDTO, long id) throws clienteNotFoundException {
+        clientes miCliente=miClienteRepository.findById(id)
+                .orElseThrow(() -> new clienteNotFoundException());
+
+        //TODO no se como hacerlo
+
+
+        return null;
     }
 }
