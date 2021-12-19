@@ -13,20 +13,13 @@ import java.time.LocalDate;
 
 public class facturasDTO {
 
-    private int identificador;
     private String nombrePropietario;
     private boolean isEmpresa;
     private float precio;
     private LocalDate fechaFactura;
-    private vehiculos vehiculo;
+    private long vehiculo_id;
 
-    public int getIdentificador() {
-        return identificador;
-    }
 
-    public void setIdentificador(int identificador) {
-        this.identificador = identificador;
-    }
 
     public String getNombrePropietario() {
         return nombrePropietario;
@@ -60,11 +53,11 @@ public class facturasDTO {
         this.fechaFactura = fechaFactura;
     }
 
-    public vehiculos getVehiculo() {
-        return vehiculo;
+    public long getVehiculo() {
+        return vehiculo_id;
     }
 
-    public void setVehiculo(vehiculos vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setVehiculo(long vehiculo) {
+        this.vehiculo_id = vehiculo;
     }
 }

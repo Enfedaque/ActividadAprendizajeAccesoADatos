@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface clientesService {
 
-    List<clientesDTO> findAll();
+    List<clientes> findAll();
     clientesDTO findById(long id) throws clienteNotFoundException;
     clientes deleteCliente(long id) throws clienteNotFoundException;
     clientes addCliente(clientesDTO clienteDTO) throws vehiculoNotFoundException;

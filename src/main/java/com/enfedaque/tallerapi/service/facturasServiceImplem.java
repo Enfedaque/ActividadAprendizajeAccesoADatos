@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,7 +26,8 @@ public class facturasServiceImplem implements facturasService {
     public List<facturasDTO> findAll() {
         List<facturas> listado=facturasRepository.findAll();
         ModelMapper mapper=new ModelMapper();
-        List<facturasDTO> listadoFinal=mapper.map(listado, (Type) facturasDTO.class);
+        List<facturasDTO> lista= new ArrayList<>();
+        List<facturasDTO> listadoFinal=mapper.map(listado, lista.getClass());
         return listadoFinal;
     }
 
@@ -33,9 +35,8 @@ public class facturasServiceImplem implements facturasService {
     public facturas findById(long id) throws facturasNotFoundException {
         facturas miFactura=facturasRepository.findById(id)
                 .orElseThrow(() -> new facturasNotFoundException());
-        ModelMapper mapper=new ModelMapper();
-        facturas miFacturaFInal=mapper.map(miFactura, (Type) facturasDTO.class);
-        return miFacturaFInal;
+
+        return miFactura;
     }
 
     @Override
@@ -50,8 +51,8 @@ public class facturasServiceImplem implements facturasService {
 
     @Override
     public facturas addFactura(facturasDTO facturasDTO) throws vehiculoNotFoundException {
-        vehiculos vehiculo=vehiculosRepository.findById((long) facturasDTO.getIdentificador())
-                .orElseThrow(() -> new vehiculoNotFoundException());
+        vehiculos vehiculo=vehiculosRepository.findById(facturasDTO.getVehiculo())
+                .orElseThrow(vehiculoNotFoundException::new);
         ModelMapper mapper=new ModelMapper();
         facturas facturaFInal=mapper.map(facturasDTO, facturas.class);
         facturaFInal.setVehiculo(vehiculo);

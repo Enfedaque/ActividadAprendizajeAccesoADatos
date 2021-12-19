@@ -17,7 +17,7 @@ public class facturas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int numFactura;
+    private long numFactura;
     @Column
     private String nombrePropietario;
     @Column(name = "is_empresa")
@@ -31,11 +31,11 @@ public class facturas {
     @JoinColumn(name = "vehiculo_id")
     private vehiculos vehiculo;
 
-    public int getNumFactura() {
+    public long getNumFactura() {
         return numFactura;
     }
 
-    public void setNumFactura(int numFactura) {
+    public void setNumFactura(long numFactura) {
         this.numFactura = numFactura;
     }
 
