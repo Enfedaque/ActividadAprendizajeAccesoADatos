@@ -46,7 +46,7 @@ public class facturasController {
 
     @PutMapping("/Facturas/{id}")
     public facturas modifyFactura(@RequestBody facturasDTO facturaDTO, @PathVariable long id)
-            throws usuarioNotFoundException, facturasNotFoundException {
+            throws usuarioNotFoundException, facturasNotFoundException, vehiculoNotFoundException {
         logger.info("Inicio modificar factura con id: " + id);
         facturas miFactura= facturasService.modifyFactura(facturaDTO, id);
         logger.info("Factura con id: " + miFactura.getNumFactura() + " modificada. FIN de la operación");

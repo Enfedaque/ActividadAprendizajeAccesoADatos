@@ -13,5 +13,5 @@ public interface facturasService {
     facturas findById(long id) throws facturasNotFoundException;
     facturas deleteFactura(long id) throws facturasNotFoundException;
     facturas addFactura(facturasDTO facturasDTO) throws vehiculoNotFoundException;
-    facturas modifyFactura(facturasDTO facturasDTO, long id) throws facturasNotFoundException;
+    facturas modifyFactura(facturasDTO facturasDTO, long id) throws facturasNotFoundException, vehiculoNotFoundException;
 }

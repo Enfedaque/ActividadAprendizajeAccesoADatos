@@ -34,7 +34,7 @@ public class facturasServiceImplem implements facturasService {
     @Override
     public facturas findById(long id) throws facturasNotFoundException {
         facturas miFactura=facturasRepository.findById(id)
-                .orElseThrow(() -> new facturasNotFoundException());
+                .orElseThrow(facturasNotFoundException::new);
 
         return miFactura;
     }
@@ -42,11 +42,11 @@ public class facturasServiceImplem implements facturasService {
     @Override
     public facturas deleteFactura(long id) throws facturasNotFoundException {
         facturas miFactura= facturasRepository.findById(id)
-                .orElseThrow(() -> new facturasNotFoundException());
+                .orElseThrow(facturasNotFoundException::new);
+
         facturasRepository.deleteById(id);
-        ModelMapper mapper=new ModelMapper();
-        facturas miFacturaFinal=mapper.map(miFactura, (Type) facturasDTO.class);
-        return miFacturaFinal;
+
+        return miFactura;
     }
 
     @Override
@@ -61,11 +61,16 @@ public class facturasServiceImplem implements facturasService {
 
     //TODO creo casi seguro que esta mal
     @Override
-    public facturas modifyFactura(facturasDTO facturasDTO, long id) throws facturasNotFoundException {
+    public facturas modifyFactura(facturasDTO facturasDTO, long id) throws facturasNotFoundException, vehiculoNotFoundException {
         facturas miFactura= facturasRepository.findById(id)
-                .orElseThrow(() -> new facturasNotFoundException());
+                .orElseThrow(facturasNotFoundException::new);
+        vehiculos miVehiculo=vehiculosRepository.findById(facturasDTO.getVehiculo())
+                .orElseThrow(vehiculoNotFoundException::new);
+
         ModelMapper mapper= new ModelMapper();
         facturas miFacturaFinal=mapper.map(facturasDTO, miFactura.getClass());
-        return miFacturaFinal;
+        miFacturaFinal.setNumFactura(miFactura.getNumFactura());
+
+        return facturasRepository.save(miFacturaFinal);
     }
 }
