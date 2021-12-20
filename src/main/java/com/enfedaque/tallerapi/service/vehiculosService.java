@@ -15,4 +15,6 @@ public interface vehiculosService {
     vehiculos modifyVehiculos(vehiculosDTO vehiculosDTO, long id) throws vehiculoNotFoundException, clienteNotFoundException;
     vehiculos addVehiculos(vehiculosDTO vehiculosDTO) throws clienteNotFoundException, facturasNotFoundException;
     vehiculos findById(long id) throws vehiculoNotFoundException;
+
+    List<vehiculos> findByMatriculaAndKilometrosAndAntiguedad(String matricula, float kilometros, int antiguedad);
 }

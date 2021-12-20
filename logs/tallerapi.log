@@ -1434,3 +1434,33 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2021-12-20 19:21:15,969 INFO com.enfedaque.tallerapi.controller.empleadosController [http-nio-8080-exec-4] Fin de la operacion de busqueda
 2021-12-20 19:21:19,469 INFO com.enfedaque.tallerapi.controller.empleadosController [http-nio-8080-exec-5] Inicio busqueda de empleado con parametros -puesto- : peon , -departamento- : taller , -salario- : 1002.12
 2021-12-20 19:21:19,470 INFO com.enfedaque.tallerapi.controller.empleadosController [http-nio-8080-exec-5] Fin de la operacion de busqueda
+2021-12-20 19:28:34,857 INFO org.springframework.boot.StartupInfoLogger [main] Starting tallerApiApplication using Java 11.0.8 on LAPTOP-NRPU4M3U with PID 12760 (C:\Users\David Enfedaque\Desktop\ACCESO A DATOS\tallerAPI\target\classes started by David Enfedaque in C:\Users\David Enfedaque\Desktop\ACCESO A DATOS\tallerAPI)
+2021-12-20 19:28:34,860 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-12-20 19:28:35,514 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-20 19:28:35,582 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 61 ms. Found 5 JPA repository interfaces.
+2021-12-20 19:28:36,321 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-12-20 19:28:36,321 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-12-20 19:28:36,337 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-12-20 19:28:36,337 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-20 19:28:36,452 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-12-20 19:28:36,452 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1564 ms
+2021-12-20 19:28:36,483 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2021-12-20 19:28:36,597 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-12-20 19:28:36,613 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:/C:/Users/David Enfedaque/Desktop/ACCESO A DATOS/baseDeDatos.db'
+2021-12-20 19:28:36,784 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-20 19:28:36,842 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.1.Final
+2021-12-20 19:28:36,983 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-20 19:28:37,132 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-20 19:28:37,854 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-20 19:28:37,870 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-20 19:28:38,210 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-20 19:28:38,435 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-12-20 19:28:38,466 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-20 19:28:38,481 INFO org.springframework.boot.StartupInfoLogger [main] Started tallerApiApplication in 4.001 seconds (JVM running for 4.604)
+2021-12-20 19:29:18,098 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-20 19:29:18,099 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-12-20 19:29:18,101 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2021-12-20 19:29:18,128 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-1] Inicio getVehiculos
+2021-12-20 19:29:18,311 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-1] Fin operacion de mostrado de vehiculos
+2021-12-20 19:29:59,386 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-3] Inicio busqueda de vehiculos con parametros -matricula- : 1111LLL , -kilometros- : 123009.23 , -antiguedad- : 23
+2021-12-20 19:29:59,410 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-3] Fin de la operacion de busqueda

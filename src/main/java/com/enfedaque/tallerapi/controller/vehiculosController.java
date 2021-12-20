@@ -1,6 +1,7 @@
 package com.enfedaque.tallerapi.controller;
 
 import com.enfedaque.tallerapi.domain.dto.vehiculosDTO;
+import com.enfedaque.tallerapi.domain.empleados;
 import com.enfedaque.tallerapi.domain.vehiculos;
 import com.enfedaque.tallerapi.excepciones.*;
 import com.enfedaque.tallerapi.service.clientesService;
@@ -69,6 +70,18 @@ public class vehiculosController {
         vehiculos miVehiculo=vehiculosService.findById(id);
         logger.info("Fin de la operacion de busqueda");
         return miVehiculo;
+    }
+
+    //Metodo que me deja buscar indicandole 3 campos
+    @GetMapping("/Vehiculos/{matricula}/{kilometros}/{antiguedad}")
+    public List<vehiculos> getVehiculoss(@PathVariable String matricula, @PathVariable float kilometros,
+                                         @PathVariable int antiguedad){
+
+        logger.info("Inicio busqueda de vehiculos con parametros -matricula- : " + matricula + " , " +
+                "-kilometros- : " + kilometros + " , -antiguedad- : " + antiguedad);
+        List<vehiculos> mivehiculo=vehiculosService.findByMatriculaAndKilometrosAndAntiguedad(matricula, kilometros, antiguedad);
+        logger.info("Fin de la operacion de busqueda");
+        return mivehiculo;
     }
 
     /*
