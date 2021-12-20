@@ -1,6 +1,7 @@
 package com.enfedaque.tallerapi.domain.dto;
 
 import com.enfedaque.tallerapi.domain.vehiculos;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class facturasDTO {
     private String nombrePropietario;
     private boolean isEmpresa;
     private float precio;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fechaFactura;
     private long vehiculo_id;
 
