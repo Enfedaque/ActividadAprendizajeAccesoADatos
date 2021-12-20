@@ -26,7 +26,6 @@ public class clientesController {
     private com.enfedaque.tallerapi.service.vehiculosService vehiculosService;
 
     //AÑADIR nuevo cliente
-    //TODO ¡¡Este ya esta terminado y perfecto en teoria!!!
     @PostMapping("/Clientes")
     public clientes addCliente(@RequestBody clientesDTO clienteDTO) throws vehiculoNotFoundException {
         logger.info("Inicio AddCliente");
@@ -36,7 +35,7 @@ public class clientesController {
     }
 
     //BORRAR cliente
-    //TODO Terminado, sin probar
+
     @DeleteMapping("/Clientes/{id}")
     public clientes deleteCliente(@PathVariable long id) throws clienteNotFoundException {
         logger.info("Inicio deleteCliente");
@@ -46,7 +45,7 @@ public class clientesController {
     }
 
     //MODIFICAR un cliente por el id
-    //TODO Terminado, sin probar
+
     @PutMapping("/Clientes/{id}")
     public clientes modifyCliente(@RequestBody clientesDTO clientesDTO, @PathVariable long id)
             throws clienteNotFoundException {
@@ -57,7 +56,7 @@ public class clientesController {
     }
 
     //Metodo que me devuelva el TOTAL DE CLIENTES
-    //TODO Terminado, sin probar
+
     @GetMapping("/Clientes") //Forma de buscarlo en el navegador
     public List<clientes> getClientes(){
         logger.info("Inicio getClientes");
@@ -67,7 +66,7 @@ public class clientesController {
     }
 
     //Metodo que me devuelve un CLIENTE SEGUN ID
-    //TODO Terminado, sin probar
+
     @GetMapping("/Clientes/{id}")
     public clientesDTO getCliente(@PathVariable long id) throws clienteNotFoundException {
         logger.info("Inicio busqueda de cliente con id: " + id);
@@ -77,17 +76,15 @@ public class clientesController {
     }
 
     //Metodo que modifica solo 1 parametro
-    //TODO terminado sin probar
-    @PatchMapping("/Clientes/{id}")
+    /*@PatchMapping("/Clientes/{id}")
     public clientes changeParameters(@RequestBody clientesDTO clientesDTO, @PathVariable long id) throws clienteNotFoundException {
         logger.info("Inicio modificacion de cliente con id: " + id);
         clientes miCliente=miClienteService.changeParameters(clientesDTO, id);
         logger.info("Cliente con id: " + id + " modificado. FIN de la operación");
         return miCliente;
-    }
+    }*/
 
     /*
-    TODO
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */
     @ExceptionHandler(clienteNotFoundException.class)
