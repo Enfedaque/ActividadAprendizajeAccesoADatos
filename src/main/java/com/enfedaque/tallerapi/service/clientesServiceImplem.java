@@ -25,7 +25,6 @@ public class clientesServiceImplem implements clientesService{
     private vehiculosRepository miVehiculosRepository;
 
 
-    //TODO FUNCIONA
     @Override
     public List<clientes> findAll() {
         List<clientes> listado=miClienteRepository.findAll();
@@ -33,11 +32,10 @@ public class clientesServiceImplem implements clientesService{
     }
 
 
-    //TODO FUNCIONA
     @Override
     public clientesDTO findById(long id) throws clienteNotFoundException {
         clientes miCliente=miClienteRepository.findById(id)
-                .orElseThrow(() -> new clienteNotFoundException());
+                .orElseThrow(clienteNotFoundException::new);
 
         ModelMapper mapper=new ModelMapper();
         clientesDTO miClienteFinal=mapper.map(miCliente, (Type) clientesDTO.class);
@@ -45,18 +43,16 @@ public class clientesServiceImplem implements clientesService{
     }
 
 
-    //TODO FUNCIONA
     @Override
     public clientes deleteCliente(long id) throws clienteNotFoundException {
         clientes miCliente= miClienteRepository.findById(id)
-                .orElseThrow(() -> new clienteNotFoundException());
+                .orElseThrow(clienteNotFoundException::new);
         miClienteRepository.deleteById(id);
         //ModelMapper mapper=new ModelMapper();
         //clientes miClienteFinal=mapper.map(miCliente, (Type) clientesDTO.class);
         return miCliente;
     }
 
-    //TODO FUNCIONA PERFECTAMENTE (falta meter los campos que herda de usuarios)
     @Override
     public clientes addCliente(clientesDTO clienteDTO) {
 
@@ -67,22 +63,22 @@ public class clientesServiceImplem implements clientesService{
         return miClienteRepository.save(miCliente);
     }
 
-    //TODO FUNCIONA MAS O MENOS
     @Override
     public clientes modifyCliente(clientesDTO clienteDTO, long id) throws clienteNotFoundException {
 
         clientes miCliente= miClienteRepository.findById(id)
-                .orElseThrow(() -> new clienteNotFoundException());
+                .orElseThrow(clienteNotFoundException::new);
+
         ModelMapper mapper= new ModelMapper();
         clientes miCliente2=mapper.map(clienteDTO, miCliente.getClass());
         miCliente2.setId(miCliente.getId());
-        return miCliente2;
+        return miClienteRepository.save(miCliente2);
     }
 
     @Override
     public clientes changeParameters(clientesDTO clienteDTO, long id) throws clienteNotFoundException {
         clientes miCliente=miClienteRepository.findById(id)
-                .orElseThrow(() -> new clienteNotFoundException());
+                .orElseThrow(clienteNotFoundException::new);
 
 
         return null;

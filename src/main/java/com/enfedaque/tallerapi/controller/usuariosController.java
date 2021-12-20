@@ -24,7 +24,7 @@ public class usuariosController {
     @Autowired //Spring lo inicializa y hace todas las cosas sin tener que hacer el new
     private usuariosService miUsuariosService;
 
-    //Metodo que me devuelva el TOTAL DE USUARIOS
+    //Mostrar todos los usuarios
     @GetMapping("/Usuarios") //Forma de buscarlo en el navegador
     public List<usuarios> getUsuarios(){
         logger.info("Inicio getUsuarios");
@@ -33,8 +33,7 @@ public class usuariosController {
         return usuarios;
     }
 
-    //Metodo que me devuelve un USUARIO SEGUN ID
-    //TODO Terminado, sin probar
+    //Buscar un usuario segun ID
     @GetMapping("/Usuarios/{id}")
     public usuarios getUsuario(@PathVariable long id) throws usuarioNotFoundException {
         logger.info("Inicio busqueda de usuario con id: " + id);
@@ -44,7 +43,6 @@ public class usuariosController {
     }
 
     //BORRAR un usuario por el id
-    //TODO Terminado, sin probar
     @DeleteMapping("/Usuarios/{id}")
     public usuarios deleteUsuario(@PathVariable long id) throws usuarioNotFoundException {
         logger.info("Inicio deleteUsuario");
@@ -53,29 +51,12 @@ public class usuariosController {
         return miUsuario;
     }
 
-    //AÑADIR un nuevo usuario
-    //TODO Terminado, sin probar
-    @PostMapping("/Usuarios")
-    public usuarios addUsuario(@RequestBody usuarios usuario){
-        logger.info("Inicio AddUsuario");
-        usuarios miUsuario=miUsuariosService.addUsuario(usuario);
-        logger.info("Usuario con id: " + miUsuario.getId() + " añadido. FIN de la operación");
-        return miUsuario;
-    }
-
-    //MODIFICAR un usuario por el id
-    //TODO Terminado, sin probar
-    @PutMapping("/Usuarios/{id}")
-    public usuarios modifyUsuario(@RequestBody usuarios usuario, @PathVariable long id)
-            throws usuarioNotFoundException {
-        logger.info("Inicio modificar usuario con id: " + id);
-        usuarios miUsuario=miUsuariosService.modifyUsuario(usuario, id);
-        logger.info("Usuario con id: " + miUsuario.getId() + " modificada. FIN de la operación");
-        return miUsuario;
-    }
+    //TODO, No creo el metodo de registrar usuarios ni el de modificar porque no tiene sentido, lo que se
+    // registran son Clientesy Empleados, que juntos componen los usurios. Por eso los
+    // usuarios si se pueden mostrar, buscar y eliminar, pero no registrar y modificar,
+    // ya que estas funciones se realizan en la clase pertinente*/
 
     /*
-    TODO
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */
     @ExceptionHandler(usuarioNotFoundException.class)

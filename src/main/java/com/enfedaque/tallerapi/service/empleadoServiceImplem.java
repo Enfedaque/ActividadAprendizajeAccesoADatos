@@ -16,11 +16,13 @@ public class empleadoServiceImplem implements empleadoService {
     private empleadosRepository miEmpleadoRepository;
 
 
+    //Añadir empleado
     @Override
     public empleados addEmpleado(empleados empleado) {
         return miEmpleadoRepository.save(empleado);
     }
 
+    //Modificar empleado
     @Override
     public empleados modifyEmpleado(empleados empleado, long id) throws empleadoNotFoundException {
         empleados miEmpleado= miEmpleadoRepository.findById( id)
@@ -40,22 +42,25 @@ public class empleadoServiceImplem implements empleadoService {
         return miEmpleadoRepository.save(miEmpleado);
     }
 
+    //Mostrar todos los empleados
     @Override
     public List<empleados> findAll() {
         return miEmpleadoRepository.findAll();
     }
 
+    //Buscar un empleado por ID
     @Override
     public empleados findById(long id) throws empleadoNotFoundException {
 
         return miEmpleadoRepository.findById(id)
-                .orElseThrow(() -> new empleadoNotFoundException());
+                .orElseThrow(empleadoNotFoundException::new);
     }
 
+    //Eliminar empleado por ID
     @Override
     public empleados deleteEmpleado(long id) throws empleadoNotFoundException {
         empleados empleado=miEmpleadoRepository.findById(id)
-                .orElseThrow(() -> new empleadoNotFoundException());
+                .orElseThrow(empleadoNotFoundException::new);
         miEmpleadoRepository.deleteById(id);
         return empleado;
     }
