@@ -16,4 +16,5 @@ public interface clientesService {
     clientes addCliente(clientesDTO clienteDTO) throws vehiculoNotFoundException;
     clientes modifyCliente(clientesDTO clienteDTO, long id) throws clienteNotFoundException;
     clientes changeParameters(clientesDTO clienteDTO, long id) throws clienteNotFoundException;
+    List<clientes> findByParticularAndPresupuestoAndNombreEmpresa(boolean particular, int presupuestoEnReparaciones, String nombreEmpresa);
 }

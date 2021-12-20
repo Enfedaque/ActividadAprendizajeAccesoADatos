@@ -84,6 +84,18 @@ public class clientesController {
         return miCliente;
     }*/
 
+    //Metodo que me deja buscar indicandole 3 campos
+    @GetMapping("/Clientes/{particular}/{presupuesto}/{nombreEmpresa}")
+    public List<clientes> getClientess(@PathVariable boolean particular, @PathVariable int presupuesto,
+                                  @PathVariable String nombreEmpresa){
+
+        logger.info("Inicio busqueda de cliente con parametros -particular- : " + particular +" , " +
+                "-presupuesto- : " + presupuesto + " , -nombreEmpresa- : " + nombreEmpresa);
+        List<clientes> miCliente=miClienteService.findByParticularAndPresupuestoAndNombreEmpresa(particular, presupuesto, nombreEmpresa);
+        logger.info("Fin de la operacion de busqueda");
+        return miCliente;
+    }
+
     /*
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */

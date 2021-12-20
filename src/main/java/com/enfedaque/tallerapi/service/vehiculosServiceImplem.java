@@ -44,8 +44,7 @@ public class vehiculosServiceImplem implements vehiculosService{
     @Override
     public List<vehiculos> findAll() {
         List<vehiculos> listado=vehiculosRepository.findAll();
-        //ModelMapper mapper=new ModelMapper();
-        //List<vehiculosDTO> listadoFinal=mapper.map(listado, (Type) vehiculosDTO.class);
+
         return listado;
     }
 

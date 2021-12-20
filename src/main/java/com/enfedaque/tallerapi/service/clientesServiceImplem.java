@@ -48,8 +48,7 @@ public class clientesServiceImplem implements clientesService{
         clientes miCliente= miClienteRepository.findById(id)
                 .orElseThrow(clienteNotFoundException::new);
         miClienteRepository.deleteById(id);
-        //ModelMapper mapper=new ModelMapper();
-        //clientes miClienteFinal=mapper.map(miCliente, (Type) clientesDTO.class);
+
         return miCliente;
     }
 
@@ -82,5 +81,14 @@ public class clientesServiceImplem implements clientesService{
 
 
         return null;
+    }
+
+    @Override
+    public List<clientes> findByParticularAndPresupuestoAndNombreEmpresa(boolean particular, int presupuestoEnReparaciones,
+                                    String nombreEmpresa) {
+
+        List<clientes> miCliente=miClienteRepository.findByParticularAndPresupuestoAndNombreEmpresa(particular,
+                presupuestoEnReparaciones, nombreEmpresa);
+        return miCliente;
     }
 }

@@ -23,7 +23,7 @@ public class clientes extends usuarios {
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fechaAlta;
     @Column(name="presupuesto")
-    private int presupuestoEnReparaciones; //No se que dato puedo guardar sino como int en un cliente...
+    private int presupuesto; //No se que dato puedo guardar sino como int en un cliente...
     @Column
     private float estatura; //No se que dato poder coger, no hay nada... para float
     @Column
@@ -50,12 +50,12 @@ public class clientes extends usuarios {
         this.fechaAlta = fechaAlta;
     }
 
-    public int getPresupuestoEnReparaciones() {
-        return presupuestoEnReparaciones;
+    public int getPresupuesto() {
+        return presupuesto;
     }
 
-    public void setPresupuestoEnReparaciones(int presupuestoEnReparaciones) {
-        this.presupuestoEnReparaciones = presupuestoEnReparaciones;
+    public void setPresupuesto(int presupuesto) {
+        this.presupuesto = presupuesto;
     }
 
     public float getEstatura() {
