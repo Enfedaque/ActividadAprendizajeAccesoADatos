@@ -25,7 +25,6 @@ public class vehiculosController {
     private vehiculosService vehiculosService;
 
     //AÑADIR nuevo vehiculo
-    //TODO
     @PostMapping("/Vehiculos")
     public vehiculos addVehiculo(@RequestBody vehiculosDTO vehiculosDTO) throws clienteNotFoundException, facturasNotFoundException {
         logger.info("Inicio AddVehiculo");
@@ -35,7 +34,6 @@ public class vehiculosController {
     }
 
     //BORRAR vehiculo
-    //TODO Terminado, sin probar
     @DeleteMapping("/Vehiculos/{id}")
     public vehiculos deleteVehiculo(@PathVariable long id) throws vehiculoNotFoundException {
         logger.info("Inicio deleteVehiculo");
@@ -48,7 +46,7 @@ public class vehiculosController {
     //TODO Terminado, sin probar
     @PutMapping("/Vehiculos/{id}")
     public vehiculos modifyVehiculo(@RequestBody vehiculosDTO vehiculosDTO, @PathVariable long id)
-            throws vehiculoNotFoundException {
+            throws vehiculoNotFoundException, clienteNotFoundException {
         logger.info("Inicio modificar vehiculo con id: " + id);
         vehiculos miVehiculo= vehiculosService.modifyVehiculos(vehiculosDTO, id);
         logger.info("Vehiculo con id: " + miVehiculo.getVehiculosID() + " modificado. FIN de la operación");
@@ -56,7 +54,6 @@ public class vehiculosController {
     }
 
     //Metodo que me devuelva el TOTAL DE vehiculos
-    //TODO Terminado, sin probar
     @GetMapping("/Vehiculos") //Forma de buscarlo en el navegador
     public List<vehiculos> getVehiculos(){
         logger.info("Inicio getVehiculos");
@@ -66,7 +63,6 @@ public class vehiculosController {
     }
 
     //Metodo que me devuelve un VEHICULO SEGUN ID
-    //TODO Terminado, sin probar
     @GetMapping("/Vehiculos/{id}")
     public vehiculos getVehiculo(@PathVariable long id) throws vehiculoNotFoundException {
         logger.info("Inicio busqueda de vehiculo con id: " + id);
@@ -76,7 +72,6 @@ public class vehiculosController {
     }
 
     /*
-    TODO
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */
     @ExceptionHandler(vehiculoNotFoundException.class)
