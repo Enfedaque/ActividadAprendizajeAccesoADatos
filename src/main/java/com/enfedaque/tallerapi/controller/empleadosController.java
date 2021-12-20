@@ -71,6 +71,18 @@ public class empleadosController {
         return miEmpleado;
     }
 
+    //Metodo que me deja buscar indicandole 3 campos
+    @GetMapping("/Empleados/{puesto}/{departamento}/{salario}")
+    public List<empleados> getEmpleadoss(@PathVariable String puesto, @PathVariable String departamento,
+                                       @PathVariable float salario){
+
+        logger.info("Inicio busqueda de empleado con parametros -puesto- : " + puesto + " , " +
+                "-departamento- : " + departamento + " , -salario- : " + salario);
+        List<empleados> miEmpleado=miEmpleadoService.findByPuestoAndDepartamentoAndSalario(puesto, departamento, salario);
+        logger.info("Fin de la operacion de busqueda");
+        return miEmpleado;
+    }
+
 
     /*
     TODO

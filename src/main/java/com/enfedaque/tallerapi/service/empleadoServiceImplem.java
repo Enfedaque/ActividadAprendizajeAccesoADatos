@@ -56,6 +56,14 @@ public class empleadoServiceImplem implements empleadoService {
                 .orElseThrow(empleadoNotFoundException::new);
     }
 
+    @Override
+    public List<empleados> findByPuestoAndDepartamentoAndSalario(String puesto, String departamento, float salario) {
+
+        List<empleados> miEmpleado=miEmpleadoRepository.findByPuestoAndDepartamentoAndSalario(puesto, departamento, salario);
+
+        return miEmpleado;
+    }
+
     //Eliminar empleado por ID
     @Override
     public empleados deleteEmpleado(long id) throws empleadoNotFoundException {

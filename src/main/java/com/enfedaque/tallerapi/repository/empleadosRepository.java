@@ -11,4 +11,6 @@ public interface empleadosRepository extends CrudRepository<empleados, Long> {
 
     //empleados findById(long id);
     List<empleados> findAll();
+
+    List<empleados> findByPuestoAndDepartamentoAndSalario(String puesto, String departamento, float salario);
 }
