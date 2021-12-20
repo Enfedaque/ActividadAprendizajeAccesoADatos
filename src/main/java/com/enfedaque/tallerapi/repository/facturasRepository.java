@@ -10,5 +10,6 @@ import java.util.List;
 public interface facturasRepository extends CrudRepository<facturas, Long> {
 
     List<facturas> findAll();
-    //facturas findById(long id);
+
+    List<facturas> findByNombrePropietarioAndIsEmpresaAndPrecio(String nombrePropietario, boolean isEmpresa, float precio);
 }

@@ -1,6 +1,7 @@
 package com.enfedaque.tallerapi.controller;
 
 import com.enfedaque.tallerapi.domain.facturas;
+import com.enfedaque.tallerapi.domain.vehiculos;
 import com.enfedaque.tallerapi.excepciones.*;
 import com.enfedaque.tallerapi.domain.dto.facturasDTO;
 import org.slf4j.Logger;
@@ -61,8 +62,20 @@ public class facturasController {
         return miFactura;
     }
 
+    //Metodo que me deja buscar indicandole 3 campos
+    @GetMapping("/Facturas/{nombrePropietario}/{isEmpresa}/{precio}")
+    public List<facturas> getFacturass(@PathVariable String nombrePropietario, @PathVariable boolean isEmpresa,
+                                         @PathVariable float precio){
+
+        logger.info("Inicio busqueda de facturas con parametros -nombrePropietario- : " + nombrePropietario + " , " +
+                "-isEmpresa- : " + isEmpresa + " , -precio- : " + precio);
+        List<facturas> miFactura=facturasService.findByNombrePropietarioAndIsEmpresaAndPrecio(nombrePropietario, isEmpresa, precio);
+        logger.info("Fin de la operacion de busqueda");
+        return miFactura;
+    }
+
     /*
-    TODO
+
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */
     @ExceptionHandler(facturasNotFoundException.class)
