@@ -1,5 +1,6 @@
 package com.enfedaque.tallerapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,9 +23,11 @@ public class vehiculos {
     //1 cliente tiene 1 o varios vehiculos
     @ManyToOne
     @JoinColumn(name = "cliente_id")
+    @JsonBackReference
     private clientes cliente;
 
     @OneToOne(mappedBy = "vehiculo")
+    @JsonBackReference
     private facturas factura;
 
     @Column(name = "fecha_entrada")

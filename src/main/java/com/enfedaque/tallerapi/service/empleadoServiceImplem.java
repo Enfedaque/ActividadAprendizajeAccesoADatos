@@ -3,6 +3,7 @@ package com.enfedaque.tallerapi.service;
 import com.enfedaque.tallerapi.excepciones.empleadoNotFoundException;
 import com.enfedaque.tallerapi.repository.empleadosRepository;
 import com.enfedaque.tallerapi.domain.empleados;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,13 @@ public class empleadoServiceImplem implements empleadoService {
     @Override
     public empleados modifyEmpleado(empleados empleado, long id) throws empleadoNotFoundException {
         empleados miEmpleado= miEmpleadoRepository.findById( id)
-                .orElseThrow(() -> new empleadoNotFoundException());
+                .orElseThrow(empleadoNotFoundException::new);
+        miEmpleado.setId(miEmpleado.getId());
+        miEmpleado.setNombre(empleado.getNombre());
+        miEmpleado.setApellido(empleado.getApellido());
+        miEmpleado.setEmail(empleado.getEmail());
+        miEmpleado.setTelefono(empleado.getTelefono());
+        miEmpleado.setFechaNac(empleado.getFechaNac());
         miEmpleado.setPuesto(empleado.getPuesto());
         miEmpleado.setDepartamento(empleado.getDepartamento());
         miEmpleado.setSalario(empleado.getSalario());

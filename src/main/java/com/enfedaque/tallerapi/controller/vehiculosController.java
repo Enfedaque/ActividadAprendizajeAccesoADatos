@@ -2,10 +2,7 @@ package com.enfedaque.tallerapi.controller;
 
 import com.enfedaque.tallerapi.domain.dto.vehiculosDTO;
 import com.enfedaque.tallerapi.domain.vehiculos;
-import com.enfedaque.tallerapi.excepciones.clienteNotFoundException;
-import com.enfedaque.tallerapi.excepciones.respuestaErrores;
-import com.enfedaque.tallerapi.excepciones.usuarioNotFoundException;
-import com.enfedaque.tallerapi.excepciones.vehiculoNotFoundException;
+import com.enfedaque.tallerapi.excepciones.*;
 import com.enfedaque.tallerapi.service.clientesService;
 import com.enfedaque.tallerapi.service.vehiculosService;
 import org.slf4j.Logger;
@@ -28,9 +25,9 @@ public class vehiculosController {
     private vehiculosService vehiculosService;
 
     //AÑADIR nuevo vehiculo
-    //TODO ¡¡Este ya esta terminado y perfecto en teoria!!!
+    //TODO
     @PostMapping("/Vehiculos")
-    public vehiculos addVehiculo(@RequestBody vehiculosDTO vehiculosDTO) throws vehiculoNotFoundException {
+    public vehiculos addVehiculo(@RequestBody vehiculosDTO vehiculosDTO) throws clienteNotFoundException, facturasNotFoundException {
         logger.info("Inicio AddVehiculo");
         vehiculos miVehiculo= vehiculosService.addVehiculos(vehiculosDTO);
         logger.info("Vehiculo con id: " + miVehiculo.getVehiculosID() + " añadido. FIN de la operación");
@@ -61,9 +58,9 @@ public class vehiculosController {
     //Metodo que me devuelva el TOTAL DE vehiculos
     //TODO Terminado, sin probar
     @GetMapping("/Vehiculos") //Forma de buscarlo en el navegador
-    public List<vehiculosDTO> getVehiculos(){
+    public List<vehiculos> getVehiculos(){
         logger.info("Inicio getVehiculos");
-        List<vehiculosDTO> vehiculos=vehiculosService.findAll();
+        List<vehiculos> vehiculos=vehiculosService.findAll();
         logger.info("Fin operacion de mostrado de vehiculos");
         return vehiculos;
     }

@@ -3,6 +3,9 @@ package com.enfedaque.tallerapi.domain.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.util.List;
+
 
 @Data
 @NoArgsConstructor
@@ -12,16 +15,36 @@ public class clientesDTO {
     como atricuto por ejemplo
      */
     private boolean particular;
+    private LocalDate fechaAlta;
+    private int presupuestoEnReparaciones;
+    private float estatura;
     private boolean empresa;
     private boolean nombreEmpresa;
-    private long vehiculos_id;
+     //No puedo hacer una lista de long para los id
 
-    public long getVehiculos_id() {
-        return vehiculos_id;
+
+    public LocalDate getFechaAlta() {
+        return fechaAlta;
     }
 
-    public void setVehiculos_id(long vehiculos_id) {
-        this.vehiculos_id = vehiculos_id;
+    public void setFechaAlta(LocalDate fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
+
+    public int getPresupuestoEnReparaciones() {
+        return presupuestoEnReparaciones;
+    }
+
+    public void setPresupuestoEnReparaciones(int presupuestoEnReparaciones) {
+        this.presupuestoEnReparaciones = presupuestoEnReparaciones;
+    }
+
+    public float getEstatura() {
+        return estatura;
+    }
+
+    public void setEstatura(float estatura) {
+        this.estatura = estatura;
     }
 
     public boolean isParticular() {

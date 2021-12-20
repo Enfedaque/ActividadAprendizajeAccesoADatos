@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -29,10 +30,17 @@ public class clientes extends usuarios {
     private boolean empresa;
     @Column(name = "nombre_empresa")
     private String nombreEmpresa;
+
     //1 cliente tiene 1 o "n" vehiculos, que los voy a guardar en una lista
-    @OneToOne(mappedBy = "cliente")
-    @JsonBackReference // TODO Aqui creo que fallara porque tiene que ser una List, no solo un objeto
-    private vehiculos vehiculo;
+    @OneToMany (mappedBy = "cliente")
+    @JsonBackReference
+    private List<vehiculos> vehiculos;
+
+
+
+
+
+
 
     public LocalDate getFechaAlta() {
         return fechaAlta;
@@ -82,12 +90,11 @@ public class clientes extends usuarios {
         this.nombreEmpresa = nombreEmpresa;
     }
 
-    public vehiculos getVehiculo() {
-        return vehiculo;
+    public List<com.enfedaque.tallerapi.domain.vehiculos> getVehiculos() {
+        return vehiculos;
     }
 
-    public void setVehiculo(vehiculos vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setVehiculos(List<com.enfedaque.tallerapi.domain.vehiculos> vehiculos) {
+        this.vehiculos = vehiculos;
     }
-
 }

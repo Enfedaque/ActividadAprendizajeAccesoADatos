@@ -1,5 +1,6 @@
 package com.enfedaque.tallerapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,11 +24,12 @@ public class empleados extends usuarios {
     private String departamento;
     @Column
     private float salario;
-    @Column
+    @Column(name="operarios_al_cargo")
     private int operariosAlCargo;
-    @Column
+    @Column(name="is_jefe_de_taller")
     private boolean isJefeDeTaller;
-    @Column
+    @Column(name="fecha_comienzo")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fechaComienzo;
 
     public String getPuesto() {

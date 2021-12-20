@@ -31,7 +31,7 @@ public class clientesController {
     public clientes addCliente(@RequestBody clientesDTO clienteDTO) throws vehiculoNotFoundException {
         logger.info("Inicio AddCliente");
         clientes miCliente= miClienteService.addCliente(clienteDTO);
-        logger.info("Cliente con id: " + miCliente.getId() + " añadido. FIN de la operación");
+        logger.info("Fin AddCliente. Cliente añadido");
         return miCliente;
     }
 
@@ -59,9 +59,9 @@ public class clientesController {
     //Metodo que me devuelva el TOTAL DE CLIENTES
     //TODO Terminado, sin probar
     @GetMapping("/Clientes") //Forma de buscarlo en el navegador
-    public List<clientesDTO> getClientes(){
+    public List<clientes> getClientes(){
         logger.info("Inicio getClientes");
-        List<clientesDTO> clientes=miClienteService.findAll();
+        List<clientes> clientes=miClienteService.findAll();
         logger.info("Fin operacion de mostrado de clientes");
         return clientes;
     }
@@ -78,7 +78,7 @@ public class clientesController {
 
     //Metodo que modifica solo 1 parametro
     //TODO terminado sin probar
-    @PatchMapping("/Clientes/{id")
+    @PatchMapping("/Clientes/{id}")
     public clientes changeParameters(@RequestBody clientesDTO clientesDTO, @PathVariable long id) throws clienteNotFoundException {
         logger.info("Inicio modificacion de cliente con id: " + id);
         clientes miCliente=miClienteService.changeParameters(clientesDTO, id);
