@@ -82,4 +82,12 @@ public class vehiculosServiceImplem implements vehiculosService{
 
         return miVehiculo;
     }
+
+    @Override
+    public List<vehiculos> findByMatriculaAndKilometrosAndAntiguedad(String matricula, float kilometros, int antiguedad) {
+
+        List<vehiculos> mivehiculo=vehiculosRepository.findByMatriculaAndKilometrosAndAntiguedad(matricula, kilometros, antiguedad);
+
+        return mivehiculo;
+    }
 }

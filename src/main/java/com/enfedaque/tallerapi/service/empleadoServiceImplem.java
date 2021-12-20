@@ -56,13 +56,6 @@ public class empleadoServiceImplem implements empleadoService {
                 .orElseThrow(empleadoNotFoundException::new);
     }
 
-    @Override
-    public List<empleados> findByPuestoAndDepartamentoAndSalario(String puesto, String departamento, float salario) {
-
-        List<empleados> miEmpleado=miEmpleadoRepository.findByPuestoAndDepartamentoAndSalario(puesto, departamento, salario);
-
-        return miEmpleado;
-    }
 
     //Eliminar empleado por ID
     @Override
@@ -71,5 +64,14 @@ public class empleadoServiceImplem implements empleadoService {
                 .orElseThrow(empleadoNotFoundException::new);
         miEmpleadoRepository.deleteById(id);
         return empleado;
+    }
+
+    //Busqueda por 3 campos
+    @Override
+    public List<empleados> findByPuestoAndDepartamentoAndSalario(String puesto, String departamento, float salario) {
+
+        List<empleados> miEmpleado=miEmpleadoRepository.findByPuestoAndDepartamentoAndSalario(puesto, departamento, salario);
+
+        return miEmpleado;
     }
 }
