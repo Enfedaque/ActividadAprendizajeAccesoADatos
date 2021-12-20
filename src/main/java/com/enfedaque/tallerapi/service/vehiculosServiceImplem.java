@@ -1,9 +1,9 @@
 package com.enfedaque.tallerapi.service;
 
-import com.enfedaque.tallerapi.domain.dto.clientesDTO;
+
 import com.enfedaque.tallerapi.domain.dto.vehiculosDTO;
 import com.enfedaque.tallerapi.domain.clientes;
-import com.enfedaque.tallerapi.domain.facturas;
+
 import com.enfedaque.tallerapi.domain.vehiculos;
 import com.enfedaque.tallerapi.excepciones.clienteNotFoundException;
 import com.enfedaque.tallerapi.excepciones.facturasNotFoundException;
@@ -15,7 +15,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 @Service
@@ -28,7 +27,7 @@ public class vehiculosServiceImplem implements vehiculosService{
     @Autowired
     private facturasRepository facturasRepository;
 
-    //todo ---------------Falta probarlo --------------
+
     @Override
     public vehiculos addVehiculos(vehiculosDTO vehiculoDTO) throws clienteNotFoundException, facturasNotFoundException {
         clientes miCliente=clientesRepository.findById(vehiculoDTO.getCliente_id())
@@ -42,8 +41,6 @@ public class vehiculosServiceImplem implements vehiculosService{
     }
 
 
-
-    //TODO ¡¡¡Creo que esta bien pero hay que probarlo!!!!
     @Override
     public List<vehiculos> findAll() {
         List<vehiculos> listado=vehiculosRepository.findAll();
@@ -52,7 +49,7 @@ public class vehiculosServiceImplem implements vehiculosService{
         return listado;
     }
 
-    //TODO ---------------Falta probarlo --------------
+
     @Override
     public vehiculos deleteVehiculos(long id) throws vehiculoNotFoundException {
         vehiculos miVehiculo= vehiculosRepository.findById(id)
@@ -65,15 +62,20 @@ public class vehiculosServiceImplem implements vehiculosService{
 
     //TODO creo casi seguro que esta mal
     @Override
-    public vehiculos modifyVehiculos(vehiculosDTO vehiculoDTO, long id) throws vehiculoNotFoundException {
+    public vehiculos modifyVehiculos(vehiculosDTO vehiculoDTO, long id) throws vehiculoNotFoundException, clienteNotFoundException {
         vehiculos miVehiculo= vehiculosRepository.findById(id)
-                .orElseThrow(() -> new vehiculoNotFoundException());
+                .orElseThrow(vehiculoNotFoundException::new);
+
+        clientes miCliente=clientesRepository.findById(vehiculoDTO.getCliente_id())
+                .orElseThrow(clienteNotFoundException::new);
+
         ModelMapper mapper= new ModelMapper();
         vehiculos miVehiculo2=mapper.map(vehiculoDTO, miVehiculo.getClass());
-        return miVehiculo2;
+
+        miVehiculo2.setVehiculosID(miVehiculo.getVehiculosID());
+        return vehiculosRepository.save(miVehiculo2);
     }
 
-    //TODO ---------------Falta probarlo --------------
     @Override
     public vehiculos findById(long id) throws vehiculoNotFoundException{
         vehiculos miVehiculo=vehiculosRepository.findById(id)

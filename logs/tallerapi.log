@@ -584,3 +584,214 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot des
 2021-12-20 17:33:42,055 INFO com.enfedaque.tallerapi.controller.usuariosController [http-nio-8080-exec-4] Fin operacion de mostrado de usuarios
 2021-12-20 17:33:52,961 INFO com.enfedaque.tallerapi.controller.clientesController [http-nio-8080-exec-5] Inicio busqueda de cliente con id: 34
 2021-12-20 17:33:52,969 INFO com.enfedaque.tallerapi.controller.clientesController [http-nio-8080-exec-5] Fin de la operacion de busqueda
+2021-12-20 17:39:47,911 INFO org.springframework.boot.StartupInfoLogger [main] Starting tallerApiApplication using Java 11.0.8 on LAPTOP-NRPU4M3U with PID 4036 (C:\Users\David Enfedaque\Desktop\ACCESO A DATOS\tallerAPI\target\classes started by David Enfedaque in C:\Users\David Enfedaque\Desktop\ACCESO A DATOS\tallerAPI)
+2021-12-20 17:39:47,911 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-12-20 17:39:48,567 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-20 17:39:48,630 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 55 ms. Found 5 JPA repository interfaces.
+2021-12-20 17:39:49,301 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-12-20 17:39:49,317 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-12-20 17:39:49,317 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-12-20 17:39:49,317 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-20 17:39:49,426 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-12-20 17:39:49,426 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1468 ms
+2021-12-20 17:39:49,458 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2021-12-20 17:39:49,583 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-12-20 17:39:49,598 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:/C:/Users/David Enfedaque/Desktop/ACCESO A DATOS/baseDeDatos.db'
+2021-12-20 17:39:49,723 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-20 17:39:49,754 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.1.Final
+2021-12-20 17:39:49,864 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-20 17:39:49,957 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-20 17:39:50,504 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-20 17:39:50,504 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-20 17:39:50,754 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-20 17:39:51,004 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-12-20 17:39:51,020 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-20 17:39:51,035 INFO org.springframework.boot.StartupInfoLogger [main] Started tallerApiApplication in 3.488 seconds (JVM running for 4.068)
+2021-12-20 17:39:56,003 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-20 17:39:56,003 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-12-20 17:39:56,003 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2021-12-20 17:39:56,035 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-2] Inicio getVehiculos
+2021-12-20 17:39:56,195 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-2] Fin operacion de mostrado de vehiculos
+2021-12-20 17:40:03,604 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-3] Inicio busqueda de vehiculo con id: 1
+2021-12-20 17:40:03,620 ERROR com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-3] Este vehiculo no existe
+com.enfedaque.tallerapi.excepciones.vehiculoNotFoundException: Este vehiculo no existe
+	at java.base/java.util.Optional.orElseThrow(Optional.java:408)
+	at com.enfedaque.tallerapi.service.vehiculosServiceImplem.findById(vehiculosServiceImplem.java:80)
+	at com.enfedaque.tallerapi.controller.vehiculosController.getVehiculo(vehiculosController.java:73)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1722)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-12-20 17:42:17,255 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-6] Inicio AddVehiculo
+2021-12-20 17:42:17,255 ERROR com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-6] Este cliente no existe
+com.enfedaque.tallerapi.excepciones.clienteNotFoundException: Este cliente no existe
+	at java.base/java.util.Optional.orElseThrow(Optional.java:408)
+	at com.enfedaque.tallerapi.service.vehiculosServiceImplem.addVehiculos(vehiculosServiceImplem.java:35)
+	at com.enfedaque.tallerapi.controller.vehiculosController.addVehiculo(vehiculosController.java:32)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1722)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-12-20 17:42:39,805 INFO com.enfedaque.tallerapi.controller.clientesController [http-nio-8080-exec-8] Inicio getClientes
+2021-12-20 17:42:39,829 INFO com.enfedaque.tallerapi.controller.clientesController [http-nio-8080-exec-8] Fin operacion de mostrado de clientes
+2021-12-20 17:42:48,050 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-9] Inicio AddVehiculo
+2021-12-20 17:42:48,154 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-9] Vehiculo con id: 1 añadido. FIN de la operación
+2021-12-20 17:43:02,029 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-10] Inicio getVehiculos
+2021-12-20 17:43:02,037 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-10] Fin operacion de mostrado de vehiculos
+2021-12-20 17:43:06,205 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-1] Inicio busqueda de vehiculo con id: 1
+2021-12-20 17:43:06,213 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-1] Fin de la operacion de busqueda
+2021-12-20 17:44:02,537 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-2] Inicio AddVehiculo
+2021-12-20 17:44:02,561 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-2] Vehiculo con id: 2 añadido. FIN de la operación
+2021-12-20 17:44:06,450 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-3] Inicio getVehiculos
+2021-12-20 17:44:06,450 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-3] Fin operacion de mostrado de vehiculos
+2021-12-20 17:48:17,821 INFO org.springframework.boot.StartupInfoLogger [main] Starting tallerApiApplication using Java 11.0.8 on LAPTOP-NRPU4M3U with PID 19068 (C:\Users\David Enfedaque\Desktop\ACCESO A DATOS\tallerAPI\target\classes started by David Enfedaque in C:\Users\David Enfedaque\Desktop\ACCESO A DATOS\tallerAPI)
+2021-12-20 17:48:17,821 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-12-20 17:48:18,414 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-20 17:48:18,492 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 54 ms. Found 5 JPA repository interfaces.
+2021-12-20 17:48:19,180 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-12-20 17:48:19,195 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-12-20 17:48:19,195 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-12-20 17:48:19,195 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-20 17:48:19,289 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-12-20 17:48:19,289 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1422 ms
+2021-12-20 17:48:19,320 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2021-12-20 17:48:19,445 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-12-20 17:48:19,461 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:/C:/Users/David Enfedaque/Desktop/ACCESO A DATOS/baseDeDatos.db'
+2021-12-20 17:48:19,601 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-20 17:48:19,633 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.1.Final
+2021-12-20 17:48:19,742 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-20 17:48:19,820 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-20 17:48:20,360 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-20 17:48:20,360 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-20 17:48:20,610 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-20 17:48:20,845 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-12-20 17:48:20,860 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-20 17:48:20,876 INFO org.springframework.boot.StartupInfoLogger [main] Started tallerApiApplication in 3.404 seconds (JVM running for 3.97)
+2021-12-20 17:53:02,911 INFO org.springframework.boot.StartupInfoLogger [main] Starting tallerApiApplication using Java 11.0.8 on LAPTOP-NRPU4M3U with PID 5276 (C:\Users\David Enfedaque\Desktop\ACCESO A DATOS\tallerAPI\target\classes started by David Enfedaque in C:\Users\David Enfedaque\Desktop\ACCESO A DATOS\tallerAPI)
+2021-12-20 17:53:02,927 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-12-20 17:53:03,521 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-20 17:53:03,599 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 62 ms. Found 5 JPA repository interfaces.
+2021-12-20 17:53:04,329 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-12-20 17:53:04,344 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-12-20 17:53:04,344 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-12-20 17:53:04,344 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-20 17:53:04,485 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-12-20 17:53:04,485 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1527 ms
+2021-12-20 17:53:04,516 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2021-12-20 17:53:04,641 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-12-20 17:53:04,672 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:/C:/Users/David Enfedaque/Desktop/ACCESO A DATOS/baseDeDatos.db'
+2021-12-20 17:53:04,797 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-20 17:53:04,829 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.1.Final
+2021-12-20 17:53:04,954 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-20 17:53:05,047 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-20 17:53:05,657 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-20 17:53:05,657 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-20 17:53:05,922 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-20 17:53:06,156 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-12-20 17:53:06,172 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-20 17:53:06,188 INFO org.springframework.boot.StartupInfoLogger [main] Started tallerApiApplication in 3.626 seconds (JVM running for 4.331)
+2021-12-20 17:53:18,170 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-20 17:53:18,172 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-12-20 17:53:18,174 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2021-12-20 17:53:18,206 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-2] Inicio getVehiculos
+2021-12-20 17:53:18,397 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-2] Fin operacion de mostrado de vehiculos
+2021-12-20 17:53:44,193 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-3] Inicio modificar vehiculo con id: 2
+2021-12-20 17:53:44,301 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-3] Vehiculo con id: 2 modificado. FIN de la operación
+2021-12-20 17:53:51,476 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-4] Inicio busqueda de vehiculo con id: 1
+2021-12-20 17:53:51,479 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-4] Fin de la operacion de busqueda
+2021-12-20 17:53:55,832 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-5] Inicio getVehiculos
+2021-12-20 17:53:55,838 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-5] Fin operacion de mostrado de vehiculos
+2021-12-20 17:54:05,128 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-6] Inicio busqueda de vehiculo con id: 2
+2021-12-20 17:54:05,130 INFO com.enfedaque.tallerapi.controller.vehiculosController [http-nio-8080-exec-6] Fin de la operacion de busqueda

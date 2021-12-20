@@ -12,7 +12,7 @@ public interface vehiculosService {
 
     List<vehiculos> findAll();
     vehiculos deleteVehiculos(long id) throws vehiculoNotFoundException;
-    vehiculos modifyVehiculos(vehiculosDTO vehiculosDTO, long id) throws vehiculoNotFoundException;
+    vehiculos modifyVehiculos(vehiculosDTO vehiculosDTO, long id) throws vehiculoNotFoundException, clienteNotFoundException;
     vehiculos addVehiculos(vehiculosDTO vehiculosDTO) throws clienteNotFoundException, facturasNotFoundException;
     vehiculos findById(long id) throws vehiculoNotFoundException;
 }
