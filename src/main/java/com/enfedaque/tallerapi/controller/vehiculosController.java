@@ -84,6 +84,15 @@ public class vehiculosController {
         return mivehiculo;
     }
 
+    //Metodo que modifica solo 1 parametro
+    @PatchMapping("/Vehiculos/{id}/{kilometros}")
+    public vehiculos modifyKilometros(@PathVariable long id, @PathVariable float kilometros) throws vehiculoNotFoundException {
+        logger.info("Inicio modificacion de kilometros de vehiculo con id: " + id);
+        vehiculos miVehiculo=vehiculosService.modifyKilometros(kilometros, id);
+        logger.info("Vehiculo con id: " + id + " modificado. FIN de la operación");
+        return miVehiculo;
+    }
+
     /*
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */

@@ -76,13 +76,13 @@ public class clientesController {
     }
 
     //Metodo que modifica solo 1 parametro
-    /*@PatchMapping("/Clientes/{id}")
-    public clientes changeParameters(@RequestBody clientesDTO clientesDTO, @PathVariable long id) throws clienteNotFoundException {
-        logger.info("Inicio modificacion de cliente con id: " + id);
-        clientes miCliente=miClienteService.changeParameters(clientesDTO, id);
+    @PatchMapping("/Clientes/{id}/{presupuesto}")
+    public clientes modifyPresupuesto(@PathVariable long id, @PathVariable int presupuesto) throws clienteNotFoundException {
+        logger.info("Inicio modificacion de presupuesto de cliente con id: " + id);
+        clientes miCliente=miClienteService.modifyPresupuesto(presupuesto, id);
         logger.info("Cliente con id: " + id + " modificado. FIN de la operación");
         return miCliente;
-    }*/
+    }
 
     //Metodo que me deja buscar indicandole 3 campos
     @GetMapping("/Clientes/{particular}/{presupuesto}/{nombreEmpresa}")

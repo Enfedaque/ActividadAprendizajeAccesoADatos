@@ -90,4 +90,14 @@ public class vehiculosServiceImplem implements vehiculosService{
 
         return mivehiculo;
     }
+
+    @Override
+    public vehiculos modifyKilometros(float kilometros, long id) throws vehiculoNotFoundException{
+
+        vehiculos miVehiculo=vehiculosRepository.findById(id)
+                .orElseThrow(vehiculoNotFoundException::new);
+
+        miVehiculo.setKilometros(kilometros);
+        return vehiculosRepository.save(miVehiculo);
+    }
 }

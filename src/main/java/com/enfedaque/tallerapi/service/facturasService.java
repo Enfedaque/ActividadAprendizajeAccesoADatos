@@ -16,4 +16,6 @@ public interface facturasService {
     facturas modifyFactura(facturasDTO facturasDTO, long id) throws facturasNotFoundException, vehiculoNotFoundException;
 
     List<facturas> findByNombrePropietarioAndIsEmpresaAndPrecio(String nombrePropietario, boolean isEmpresa, float precio);
+
+    facturas modifyPrecio(float precio, long id) throws facturasNotFoundException;
 }

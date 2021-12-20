@@ -74,4 +74,15 @@ public class empleadoServiceImplem implements empleadoService {
 
         return miEmpleado;
     }
+
+    @Override
+    public empleados modifySalario(float salario, long id) throws empleadoNotFoundException{
+
+        empleados miEmpleado= miEmpleadoRepository.findById(id)
+                .orElseThrow(empleadoNotFoundException::new);
+
+        miEmpleado.setSalario(salario);
+
+        return miEmpleadoRepository.save(miEmpleado);
+    }
 }

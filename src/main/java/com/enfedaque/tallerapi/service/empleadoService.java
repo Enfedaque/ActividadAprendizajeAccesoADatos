@@ -14,4 +14,6 @@ public interface empleadoService {
     empleados findById(long id) throws empleadoNotFoundException;
 
     List<empleados> findByPuestoAndDepartamentoAndSalario(String puesto, String departamento, float salario);
+
+    empleados modifySalario(float salario, long id) throws empleadoNotFoundException;
 }
