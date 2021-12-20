@@ -17,4 +17,6 @@ public interface vehiculosService {
     vehiculos findById(long id) throws vehiculoNotFoundException;
 
     List<vehiculos> findByMatriculaAndKilometrosAndAntiguedad(String matricula, float kilometros, int antiguedad);
+
+    vehiculos modifyKilometros(float kilometros, long id) throws vehiculoNotFoundException;
 }

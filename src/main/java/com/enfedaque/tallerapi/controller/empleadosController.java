@@ -83,9 +83,16 @@ public class empleadosController {
         return miEmpleado;
     }
 
+    //Metodo que modifica solo 1 parametro
+    @PatchMapping("/Empleados/{id}/{salario}")
+    public empleados modifySalario(@PathVariable long id, @PathVariable float salario) throws empleadoNotFoundException {
+        logger.info("Inicio modificacion de salario de empleado con id: " + id);
+        empleados miEmpleado=miEmpleadoService.modifySalario(salario, id);
+        logger.info("Empleado con id: " + id + " modificado. FIN de la operación");
+        return miEmpleado;
+    }
 
     /*
-    TODO
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */
     @ExceptionHandler(empleadoNotFoundException.class)

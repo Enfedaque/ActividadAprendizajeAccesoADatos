@@ -81,4 +81,14 @@ public class facturasServiceImplem implements facturasService {
 
         return miFactura;
     }
+
+    @Override
+    public facturas modifyPrecio(float precio, long id) throws facturasNotFoundException{
+
+        facturas miFactura=facturasRepository.findById(id)
+                .orElseThrow(facturasNotFoundException::new);
+
+        miFactura.setPrecio(precio);
+        return facturasRepository.save(miFactura);
+    }
 }

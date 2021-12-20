@@ -74,6 +74,15 @@ public class facturasController {
         return miFactura;
     }
 
+    //Metodo que modifica solo 1 parametro
+    @PatchMapping("/Facturas/{id}/{precio}")
+    public facturas modifyPrecio(@PathVariable long id, @PathVariable float precio) throws facturasNotFoundException {
+        logger.info("Inicio modificacion de precio de factura con id: " + id);
+        facturas miFactura=facturasService.modifyPrecio(precio, id);
+        logger.info("Factura con id: " + id + " modificada. FIN de la operación");
+        return miFactura;
+    }
+
     /*
 
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO

@@ -75,15 +75,6 @@ public class clientesServiceImplem implements clientesService{
     }
 
     @Override
-    public clientes changeParameters(clientesDTO clienteDTO, long id) throws clienteNotFoundException {
-        clientes miCliente=miClienteRepository.findById(id)
-                .orElseThrow(clienteNotFoundException::new);
-
-
-        return null;
-    }
-
-    @Override
     public List<clientes> findByParticularAndPresupuestoAndNombreEmpresa(boolean particular, int presupuestoEnReparaciones,
                                     String nombreEmpresa) {
 
@@ -91,4 +82,16 @@ public class clientesServiceImplem implements clientesService{
                 presupuestoEnReparaciones, nombreEmpresa);
         return miCliente;
     }
+
+    @Override
+    public clientes modifyPresupuesto(int presupuesto, long id) throws clienteNotFoundException{
+        clientes miCliente=miClienteRepository.findById(id)
+                .orElseThrow(clienteNotFoundException::new);
+
+        miCliente.setPresupuesto(presupuesto);
+
+        return miClienteRepository.save(miCliente);
+    }
+
+
 }
