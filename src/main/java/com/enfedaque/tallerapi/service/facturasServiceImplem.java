@@ -73,4 +73,12 @@ public class facturasServiceImplem implements facturasService {
 
         return facturasRepository.save(miFacturaFinal);
     }
+
+    @Override
+    public List<facturas> findByNombrePropietarioAndIsEmpresaAndPrecio(String nombrePropietario, boolean isEmpresa, float precio) {
+
+        List<facturas> miFactura=facturasRepository.findByNombrePropietarioAndIsEmpresaAndPrecio(nombrePropietario, isEmpresa, precio);
+
+        return miFactura;
+    }
 }
