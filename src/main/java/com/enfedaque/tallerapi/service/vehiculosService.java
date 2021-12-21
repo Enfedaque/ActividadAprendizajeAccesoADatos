@@ -1,11 +1,13 @@
 package com.enfedaque.tallerapi.service;
 
 import com.enfedaque.tallerapi.domain.dto.vehiculosDTO;
+import com.enfedaque.tallerapi.domain.usuarios;
 import com.enfedaque.tallerapi.domain.vehiculos;
 import com.enfedaque.tallerapi.excepciones.clienteNotFoundException;
 import com.enfedaque.tallerapi.excepciones.facturasNotFoundException;
 import com.enfedaque.tallerapi.excepciones.vehiculoNotFoundException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface vehiculosService {
@@ -19,4 +21,6 @@ public interface vehiculosService {
     List<vehiculos> findByMatriculaAndKilometrosAndAntiguedad(String matricula, float kilometros, int antiguedad);
 
     vehiculos modifyKilometros(float kilometros, long id) throws vehiculoNotFoundException;
+
+    List<vehiculos> findByPropietario(boolean unicoPropietario);
 }

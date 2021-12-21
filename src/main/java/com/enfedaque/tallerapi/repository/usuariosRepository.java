@@ -1,6 +1,8 @@
 package com.enfedaque.tallerapi.repository;
 
+import com.enfedaque.tallerapi.domain.empleados;
 import com.enfedaque.tallerapi.domain.usuarios;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +18,8 @@ public interface usuariosRepository extends CrudRepository<usuarios, Long> {
 
     //Devuleve todos los usuarios
     List<usuarios> findAll();
-    //Devuelve usuarios con una edad mayor que (>) la que se le pasa
-    //List<usuarios> findByEdadGreaterThan(int edad);
+
+    //JPQL
+    @Query("SELECT user FROM usuarios user WHERE nombre= :nombre")
+    List<usuarios> findByNombre(String nombre);
 }

@@ -4,6 +4,7 @@ package com.enfedaque.tallerapi.service;
 import com.enfedaque.tallerapi.domain.dto.vehiculosDTO;
 import com.enfedaque.tallerapi.domain.clientes;
 
+import com.enfedaque.tallerapi.domain.usuarios;
 import com.enfedaque.tallerapi.domain.vehiculos;
 import com.enfedaque.tallerapi.excepciones.clienteNotFoundException;
 import com.enfedaque.tallerapi.excepciones.facturasNotFoundException;
@@ -15,6 +16,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -99,5 +101,11 @@ public class vehiculosServiceImplem implements vehiculosService{
 
         miVehiculo.setKilometros(kilometros);
         return vehiculosRepository.save(miVehiculo);
+    }
+
+    //Del reposirtoio que hago la consulta con JPQL
+    @Override
+    public List<vehiculos> findByPropietario(boolean unicoPropietario) {
+        return vehiculosRepository.findByPropietario(unicoPropietario);
     }
 }

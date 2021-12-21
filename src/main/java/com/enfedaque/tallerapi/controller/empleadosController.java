@@ -92,6 +92,15 @@ public class empleadosController {
         return miEmpleado;
     }
 
+    //Metodo que me devuelve los empleados con x operariosAlCargo
+    @GetMapping("/BusquedaEmpleados/{operariosAlCargo}") //Forma de buscarlo en el navegador
+    public List<empleados> findByOperarios(@PathVariable int operariosAlCargo){
+        logger.info("Inicio findByOperarios");
+        List<empleados> empleados=miEmpleadoService.findByOperarios(operariosAlCargo);
+        logger.info("Fin operacion de mostrado de empleados segun operarios al cargo");
+        return empleados;
+    }
+
     /*
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */

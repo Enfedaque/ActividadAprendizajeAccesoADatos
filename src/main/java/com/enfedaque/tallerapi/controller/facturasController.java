@@ -83,6 +83,15 @@ public class facturasController {
         return miFactura;
     }
 
+    //Consultar el precio de las facturas de 1 propietario con JPQL
+    @GetMapping("/BusquedaFacturas/{nombrePropietario}") //Forma de buscarlo en el navegador
+    public List<String> findByNombrePro(@PathVariable String nombrePropietario){
+        logger.info("Inicio findByNombrePro");
+        List<String> factura=facturasService.findByNomprePro(nombrePropietario);
+        logger.info("Fin operacion de mostrado de facturas");
+        return factura;
+    }
+
     /*
 
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
