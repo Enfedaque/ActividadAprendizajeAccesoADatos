@@ -96,10 +96,19 @@ public class vehiculosController {
     }
 
     //Me devuelve los vehiculos con un solo propietario pidiendolo con JPQL
-    @GetMapping("/BusquedaVehiculos/{unicoPropietario}") //Forma de buscarlo en el navegador
+    @GetMapping("/BusquedaVehiculos/{unicoPropietario}")
     public List<vehiculos> findByPropietario(@PathVariable boolean unicoPropietario){
         logger.info("Inicio findByPropieatrio");
         List<vehiculos> vehiculos=vehiculosService.findByPropietario(unicoPropietario);
+        logger.info("Fin operacion de mostrado de vehiculos");
+        return vehiculos;
+    }
+
+    //Me devuelve las fechas de entrada a traves de la matricula con SQL NATIVA
+    @GetMapping("/BuscarVehiculos/{matricula}")
+    public List<LocalDate> busquedaVariada(@PathVariable String matricula){
+        logger.info("Inicio busquedaVariada");
+        List<LocalDate> vehiculos=vehiculosService.busquedaVariada(matricula);
         logger.info("Fin operacion de mostrado de vehiculos");
         return vehiculos;
     }

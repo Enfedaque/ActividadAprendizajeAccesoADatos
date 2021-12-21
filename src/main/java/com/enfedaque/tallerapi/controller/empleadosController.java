@@ -101,6 +101,15 @@ public class empleadosController {
         return empleados;
     }
 
+    //Buscar el puesto y el departamento a traves del salario con SQL
+    @GetMapping("/BuscarEmpleados/{salario}")
+    public List<String> buscarPuestoYDepart(@PathVariable float salario){
+        logger.info("Inicio buscarPuestoYDepart");
+        List<String> empleados=miEmpleadoService.buscarPuestoYDepart(salario);
+        logger.info("Fin operacion de mostrado de empleados");
+        return empleados;
+    }
+
     /*
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */

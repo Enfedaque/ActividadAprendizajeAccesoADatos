@@ -18,4 +18,8 @@ public interface empleadosRepository extends CrudRepository<empleados, Long> {
     //JPQL
     @Query("SELECT emple FROM empleados emple WHERE operariosAlCargo= :operariosAlCargo")
     List<empleados> findByOperarios(int operariosAlCargo);
+
+    //SQL NATIVAS
+    @Query(value = "SELECT puesto, departamento FROM empleados WHERE salario= :salario")
+    List<String> buscarPuestoYDepart(float salario);
 }

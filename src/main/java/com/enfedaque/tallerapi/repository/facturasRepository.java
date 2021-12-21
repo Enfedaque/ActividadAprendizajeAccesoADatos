@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -18,4 +19,8 @@ public interface facturasRepository extends CrudRepository<facturas, Long> {
     //JPQL
     @Query("SELECT precio FROM facturas f WHERE nombrePropietario= :nombrePropietario")
     List<String> findByNomprePro(String nombrePropietario);
+
+    //SQL NATIVAS
+    @Query(value = "SELECT nombrePropietario FROM facturas WHERE numFactura= :numFactura")
+    String buscarDuenoFactura(long numFactura);
 }

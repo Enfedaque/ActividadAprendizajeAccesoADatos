@@ -18,4 +18,6 @@ public interface usuariosService {
     usuarios modifyUsuario(usuarios usuario, long id) throws usuarioNotFoundException;
 
     List<usuarios> findByNombre(String nombre);
+
+    List<String> busquedaVariada(String nombre, String telefono);
 }

@@ -108,4 +108,9 @@ public class vehiculosServiceImplem implements vehiculosService{
     public List<vehiculos> findByPropietario(boolean unicoPropietario) {
         return vehiculosRepository.findByPropietario(unicoPropietario);
     }
+
+    @Override
+    public List<LocalDate> busquedaVariada(String matricula) {
+        return vehiculosRepository.busquedaVariada(matricula);
+    }
 }

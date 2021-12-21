@@ -18,4 +18,6 @@ public interface empleadoService {
     empleados modifySalario(float salario, long id) throws empleadoNotFoundException;
 
     List<empleados> findByOperarios(int operariosAlCargo);
+
+    List<String> buscarPuestoYDepart(float salario);
 }

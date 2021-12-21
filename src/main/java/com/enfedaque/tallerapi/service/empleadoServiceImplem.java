@@ -92,4 +92,10 @@ public class empleadoServiceImplem implements empleadoService {
 
         return miEmpleadoRepository.findByOperarios(operariosAlCargo);
     }
+
+    //Viene del repository con SQL NATIVAS
+    @Override
+    public List<String> buscarPuestoYDepart(float salario) {
+        return miEmpleadoRepository.buscarPuestoYDepart(salario);
+    }
 }

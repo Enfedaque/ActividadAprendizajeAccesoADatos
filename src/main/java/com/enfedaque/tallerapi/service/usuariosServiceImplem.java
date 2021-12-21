@@ -55,4 +55,9 @@ public class usuariosServiceImplem implements usuariosService {
     public List<usuarios> findByNombre(String nombre) {
         return miUsuariosRepository.findByNombre(nombre);
     }
+
+    @Override
+    public List<String> busquedaVariada(String nombre, String telefono) {
+        return miUsuariosRepository.busquedaVariada(nombre, telefono);
+    }
 }
