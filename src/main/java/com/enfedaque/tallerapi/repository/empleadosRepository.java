@@ -1,6 +1,7 @@
 package com.enfedaque.tallerapi.repository;
 
 import com.enfedaque.tallerapi.domain.empleados;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +14,8 @@ public interface empleadosRepository extends CrudRepository<empleados, Long> {
     List<empleados> findAll();
 
     List<empleados> findByPuestoAndDepartamentoAndSalario(String puesto, String departamento, float salario);
+
+    //JPQL
+    @Query("SELECT emple FROM empleados emple WHERE operariosAlCargo= :operariosAlCargo")
+    List<empleados> findByOperarios(int operariosAlCargo);
 }

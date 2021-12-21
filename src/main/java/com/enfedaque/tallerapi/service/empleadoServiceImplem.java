@@ -85,4 +85,11 @@ public class empleadoServiceImplem implements empleadoService {
 
         return miEmpleadoRepository.save(miEmpleado);
     }
+
+    //Operacion que viene del metodo del repository en JPQL
+    @Override
+    public List<empleados> findByOperarios(int operariosAlCargo) {
+
+        return miEmpleadoRepository.findByOperarios(operariosAlCargo);
+    }
 }

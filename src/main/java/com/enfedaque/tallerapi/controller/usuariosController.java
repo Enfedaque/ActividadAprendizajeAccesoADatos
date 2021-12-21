@@ -56,6 +56,15 @@ public class usuariosController {
     // usuarios si se pueden mostrar, buscar y eliminar, pero no registrar y modificar,
     // ya que estas funciones se realizan en la clase pertinente*/
 
+    //Buscar usuarios por el nombre con JPQL
+    @GetMapping("/BusquedaUsuarios/{nombre}")
+    public List<usuarios> findByNombre(@PathVariable String nombre){
+        logger.info("Inicio findByNombre");
+        List<usuarios> usuarios=miUsuariosService.findByNombre(nombre);
+        logger.info("Fin operacion de mostrado de usuarios");
+        return usuarios;
+    }
+
     /*
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */

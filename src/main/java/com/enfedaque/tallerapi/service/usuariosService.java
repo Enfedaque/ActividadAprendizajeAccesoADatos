@@ -16,4 +16,6 @@ public interface usuariosService {
     usuarios deleteUsuario(long id) throws usuarioNotFoundException;
     usuarios addUsuario(usuarios usuario);
     usuarios modifyUsuario(usuarios usuario, long id) throws usuarioNotFoundException;
+
+    List<usuarios> findByNombre(String nombre);
 }

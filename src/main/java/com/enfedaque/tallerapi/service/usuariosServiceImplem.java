@@ -50,4 +50,9 @@ public class usuariosServiceImplem implements usuariosService {
         usuarios usuarioModificado=mapper.map(miUsuario, usuarios.class);
         return miUsuariosRepository.save(usuarioModificado);
     }
+
+    @Override
+    public List<usuarios> findByNombre(String nombre) {
+        return miUsuariosRepository.findByNombre(nombre);
+    }
 }

@@ -91,4 +91,9 @@ public class facturasServiceImplem implements facturasService {
         miFactura.setPrecio(precio);
         return facturasRepository.save(miFactura);
     }
+
+    @Override
+    public List<String> findByNomprePro(String nombrePropietario) {
+        return facturasRepository.findByNomprePro(nombrePropietario);
+    }
 }

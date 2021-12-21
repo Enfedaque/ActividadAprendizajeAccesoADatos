@@ -6,6 +6,7 @@ import com.enfedaque.tallerapi.domain.vehiculos;
 import com.enfedaque.tallerapi.excepciones.*;
 import com.enfedaque.tallerapi.service.clientesService;
 import com.enfedaque.tallerapi.service.vehiculosService;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -91,6 +93,15 @@ public class vehiculosController {
         vehiculos miVehiculo=vehiculosService.modifyKilometros(kilometros, id);
         logger.info("Vehiculo con id: " + id + " modificado. FIN de la operación");
         return miVehiculo;
+    }
+
+    //Me devuelve los vehiculos con un solo propietario pidiendolo con JPQL
+    @GetMapping("/BusquedaVehiculos/{unicoPropietario}") //Forma de buscarlo en el navegador
+    public List<vehiculos> findByPropietario(@PathVariable boolean unicoPropietario){
+        logger.info("Inicio findByPropieatrio");
+        List<vehiculos> vehiculos=vehiculosService.findByPropietario(unicoPropietario);
+        logger.info("Fin operacion de mostrado de vehiculos");
+        return vehiculos;
     }
 
     /*
