@@ -23,4 +23,6 @@ public interface vehiculosService {
     vehiculos modifyKilometros(float kilometros, long id) throws vehiculoNotFoundException;
 
     List<vehiculos> findByPropietario(boolean unicoPropietario);
+
+    List<LocalDate> busquedaVariada(String matricula);
 }

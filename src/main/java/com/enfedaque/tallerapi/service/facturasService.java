@@ -20,4 +20,6 @@ public interface facturasService {
     facturas modifyPrecio(float precio, long id) throws facturasNotFoundException;
 
     List<String> findByNomprePro(String nombrePropietario);
+
+    String buscarDuenoFactura(long numFactura);
 }

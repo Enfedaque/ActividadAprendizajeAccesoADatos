@@ -96,4 +96,9 @@ public class facturasServiceImplem implements facturasService {
     public List<String> findByNomprePro(String nombrePropietario) {
         return facturasRepository.findByNomprePro(nombrePropietario);
     }
+
+    @Override
+    public String buscarDuenoFactura(long numFactura) {
+        return facturasRepository.buscarDuenoFactura(numFactura);
+    }
 }

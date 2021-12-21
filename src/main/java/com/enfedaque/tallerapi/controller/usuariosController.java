@@ -65,6 +65,15 @@ public class usuariosController {
         return usuarios;
     }
 
+    //Buscar email y DNI por el nombre y telefono con SQL NATIVA
+    @GetMapping("/BusquedaUsuarios/{nombre}/{telefono}")
+    public List<String> busquedaVariada(@PathVariable String nombre, @PathVariable String telefono){
+        logger.info("Inicio busquedaVariada");
+        List<String> usuarios=miUsuariosService.busquedaVariada(nombre, telefono);
+        logger.info("Fin operacion de mostrado de usuarios");
+        return usuarios;
+    }
+
     /*
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO
      */

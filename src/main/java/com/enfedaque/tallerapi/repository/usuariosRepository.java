@@ -22,4 +22,8 @@ public interface usuariosRepository extends CrudRepository<usuarios, Long> {
     //JPQL
     @Query("SELECT user FROM usuarios user WHERE nombre= :nombre")
     List<usuarios> findByNombre(String nombre);
+
+    //SQL NATIVAS
+    @Query(value = "SELECT DNI, email FROM usuarios WHERE nombre= :nombre AND telefono= :telefono")
+    List<String> busquedaVariada(String nombre, String telefono);
 }

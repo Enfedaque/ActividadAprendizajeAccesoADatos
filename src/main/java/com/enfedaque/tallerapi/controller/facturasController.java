@@ -84,7 +84,7 @@ public class facturasController {
     }
 
     //Consultar el precio de las facturas de 1 propietario con JPQL
-    @GetMapping("/BusquedaFacturas/{nombrePropietario}") //Forma de buscarlo en el navegador
+    @GetMapping("/BusquedaFacturas/{nombrePropietario}")
     public List<String> findByNombrePro(@PathVariable String nombrePropietario){
         logger.info("Inicio findByNombrePro");
         List<String> factura=facturasService.findByNomprePro(nombrePropietario);
@@ -92,6 +92,14 @@ public class facturasController {
         return factura;
     }
 
+    //Consultar el dueño de una factura con SQL NATIVA
+    @GetMapping("/BuscarFacturas/{numFactura}")
+    public String buscarDuenoFactura(@PathVariable long numFactura){
+        logger.info("Inicio buscarDuenoFactura");
+        String factura=facturasService.buscarDuenoFactura(numFactura);
+        logger.info("Fin operacion de mostrado de facturas");
+        return factura;
+    }
     /*
 
     AQUI GESTIONO LAS EXCEPCIONES Y LAS CAPTURO

@@ -19,4 +19,8 @@ public interface vehiculosRepository extends CrudRepository<vehiculos, Long> {
     //JPQL
     @Query("SELECT veh FROM vehiculos veh WHERE unicoPropietario= :unicoPropietario")
     List<vehiculos> findByPropietario(boolean unicoPropietario);
+
+    //SQL NATIVAS
+    @Query(value = "SELECT fechaEntrada FROM vehiculos WHERE matricula= :matricula")
+    List<LocalDate> busquedaVariada(String matricula);
 }
